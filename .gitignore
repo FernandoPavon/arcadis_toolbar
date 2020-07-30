@@ -3,3 +3,14 @@
 ################################################################################
 
 /ArcadisToolbar/bin
+/ArcadisToolbar/obj
+/CableTools/bin
+/CableTools/obj
+/DynamicTools/bin
+/DynamicTools/obj
+/Export_Panel/bin
+/Export_Panel/obj
+/Import_Panel/bin
+/Import_Panel/obj
+/MetricsTracker/bin
+/MetricsTracker/obj
