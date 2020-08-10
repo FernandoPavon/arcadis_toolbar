@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  
+  <AddIn Type="Application">
+    <Name>Arcadis Cable Tools</Name>
+    <Assembly>Cable_Panel.dll</Assembly>
+    <FullClassName>Cable_Panel.AppCable</FullClassName>
+    <ClientId>5F775B57-D80A-40C0-9B26-FF34D07F9355</ClientId>
+    <VendorId>Autodesk</VendorId>
+    <VendorDescription>EMEA Consulting</VendorDescription>
+  </AddIn>
+
+</RevitAddIns>
+

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using MetricsTracker;
+using CommonTools;
 
 namespace Export_Panel
 {
@@ -28,6 +28,7 @@ namespace Export_Panel
 
             try
             {
+                Metrics.AppendLog("\r\nCapture command metrics----->\r\n");
                 TaskDialog.Show("ExportData_Command", "Export Data");
             }
             catch (Exception ex)

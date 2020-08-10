@@ -1,0 +1,11 @@
+C:\Arcadis_Toolbars\CableTools\bin\Debug\CableTools.dll
+C:\Arcadis_Toolbars\CableTools\bin\Debug\CableTools.pdb
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.csprojAssemblyReference.cache
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.g.resources
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.Properties.Resources.resources
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.csproj.GenerateResource.cache
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.dll
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.pdb
+C:\Arcadis_Toolbars\CableTools\bin\Debug\MetricsTracker.dll
+C:\Arcadis_Toolbars\CableTools\bin\Debug\MetricsTracker.pdb
+C:\Arcadis_Toolbars\CableTools\obj\Debug\CableTools.csproj.CopyComplete

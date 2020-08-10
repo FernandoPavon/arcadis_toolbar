@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using MetricsTracker;
+using CommonTools;
 
 namespace Import_Panel
 {
@@ -28,6 +28,7 @@ namespace Import_Panel
 
             try
             {
+                Metrics.AppendLog("\r\nCapture command metrics----->\r\n");
                 TaskDialog.Show("ImportExcel_Command", "Import from Excel");
             }
             catch (Exception ex)

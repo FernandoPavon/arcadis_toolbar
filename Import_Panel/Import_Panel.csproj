@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppImport.cs" />
     <Compile Include="ImportData_Command.cs" />
     <Compile Include="ImportExcel_Command.cs" />
     <Compile Include="ImportPCF_Command.cs" />
@@ -108,6 +109,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Import_Panel.addin" />
     <None Include="Resources\ImportExcel.png" />
   </ItemGroup>
   <ItemGroup>
@@ -117,10 +119,18 @@
     <Resource Include="Resources\ImportData.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MetricsTracker\MetricsTracker.csproj">
-      <Project>{1f7b0815-cc99-42c9-8b18-0ac5f776f94c}</Project>
-      <Name>MetricsTracker</Name>
+    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
+      <Project>{2ef368c0-84f5-4540-b255-a18e6be528a9}</Project>
+      <Name>CommonTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>SET Repository=C:\Arcadis_AddIn_Repository
+
+if $(ConfigurationName) == 2018Debug (
+copy "$(ProjectDir)*.addin" "%25Repository%25\2018"
+copy "$(ProjectDir)bin\2018Debug\*.dll" "%25Repository%25\2018"
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

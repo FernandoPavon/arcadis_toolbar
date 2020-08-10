@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  
+  <AddIn Type="Application">
+    <Name>Arcadis Export Tools</Name>
+    <Assembly>Export_Panel.dll</Assembly>
+    <FullClassName>Export_Panel.AppExport</FullClassName>
+    <ClientId>7FA48074-383C-4630-A00A-C6505A79D4A9</ClientId>
+    <VendorId>Autodesk</VendorId>
+    <VendorDescription>EMEA Consulting</VendorDescription>
+  </AddIn>
+
+</RevitAddIns>
+

@@ -1,0 +1,11 @@
+C:\Arcadis_Toolbars\CableTools\bin\2019Debug\ArcadisToolbar_II.dll
+C:\Arcadis_Toolbars\CableTools\bin\2019Debug\ArcadisToolbar_II.pdb
+C:\Arcadis_Toolbars\CableTools\bin\2019Debug\MetricsTracker.dll
+C:\Arcadis_Toolbars\CableTools\bin\2019Debug\MetricsTracker.pdb
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.csprojAssemblyReference.cache
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.g.resources
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.Properties.Resources.resources
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.csproj.GenerateResource.cache
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.csproj.CopyComplete
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.dll
+C:\Arcadis_Toolbars\CableTools\obj\2019Debug\ArcadisToolbar_II.pdb

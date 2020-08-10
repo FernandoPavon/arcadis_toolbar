@@ -8,7 +8,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using MetricsTracker;
+using CommonTools;
 
 namespace DynamicTools
 {
@@ -29,6 +29,7 @@ namespace DynamicTools
 
             try
             {
+                Metrics.AppendLog("\r\nCapture command metrics\r\n");
                 TaskDialog.Show("Dynamic Tools", "Dynamic Command");  
             }
             catch (Exception ex)

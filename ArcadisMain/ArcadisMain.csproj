@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DD11CDB-278C-4AAB-BC2A-0DDE85B3563D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArcadisMain</RootNamespace>
+    <AssemblyName>ArcadisMain</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2018Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\2018Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;Revit2018</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2018Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\2018Release\</OutputPath>
+    <DefineConstants>TRACE;Revit2018</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2019Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\2019Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;Revit2019</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2019Release|AnyCPU'">
+    <OutputPath>bin\2019Release\</OutputPath>
+    <DefineConstants>TRACE;Revit2019</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2020Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\2020Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;Revit2020</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2020Release|AnyCPU'">
+    <OutputPath>bin\2020Release\</OutputPath>
+    <DefineConstants>TRACE;Revit2020</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2018\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Program Files\Dynamo\Dynamo Revit\2\Revit_2019\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RevitAPI" Condition=" '$(Configuration)' == '2018Debug' OR '$(Configuration)' == '2018Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition=" '$(Configuration)' == '2018Debug' OR '$(Configuration)' == '2018Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition=" '$(Configuration)' == '2019Debug' OR '$(Configuration)' == '2019Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition=" '$(Configuration)' == '2019Debug' OR '$(Configuration)' == '2019Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition=" '$(Configuration)' == '2020Debug' OR '$(Configuration)' == '2020Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition=" '$(Configuration)' == '2020Debug' OR '$(Configuration)' == '2020Release' ">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About_Command.cs" />
+    <Compile Include="About_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About_Form.Designer.cs">
+      <DependentUpon>About_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocPreferences.cs" />
+    <Compile Include="MainApp.cs" />
+    <Compile Include="MainUserPreferences.cs" />
+    <Compile Include="Metrics_Command.cs" />
+    <Compile Include="Metrics_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metrics_Form.Designer.cs">
+      <DependentUpon>Metrics_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings_Command.cs" />
+    <Compile Include="Settings_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings_Form.Designer.cs">
+      <DependentUpon>Settings_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VersionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VersionsForm.Designer.cs">
+      <DependentUpon>VersionsForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
+      <Project>{2ef368c0-84f5-4540-b255-a18e6be528a9}</Project>
+      <Name>CommonTools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ArcadisMain.addin" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="About_Form.resx">
+      <DependentUpon>About_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metrics_Form.resx">
+      <DependentUpon>Metrics_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings_Form.resx">
+      <DependentUpon>Settings_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VersionsForm.resx">
+      <DependentUpon>VersionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Info.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AboutHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BarChart2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Button44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MetricsHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Panel44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SettingsHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Tab40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Arcadis.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\electricalPanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exportPanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cablePanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\importPanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dynamicPanel.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>SET Repository=C:\Arcadis_AddIn_Repository
+
+if $(ConfigurationName) == 2018Debug (
+copy "$(ProjectDir)*.addin" "%25Repository%25\2018"
+copy "$(ProjectDir)bin\2018Debug\*.dll" "%25Repository%25\2018"
+)
+
+if $(ConfigurationName) == 2018Release (
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\Revit\Addins\2018"
+copy "$(ProjectDir)bin\2018Release\*.dll" "$(AppData)\Autodesk\Revit\Addins\2018\ArcadisToolbar"
+)
+
+if $(ConfigurationName) == 2019Debug (
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\Revit\Addins\2019"
+copy "$(ProjectDir)bin\2019Debug\*.dll" "$(AppData)\Autodesk\Revit\Addins\2019\ArcadisToolbar"
+)
+
+if $(ConfigurationName) == 2019Release (
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\Revit\Addins\2019"
+copy "$(ProjectDir)bin\2019Release\*.dll" "$(AppData)\Autodesk\Revit\Addins\2019\ArcadisToolbar"
+)
+
+if $(ConfigurationName) == 2020Debug (
+copy "$(ProjectDir)AddIn\*.addin" "$(AppData)\Autodesk\Revit\Addins\2020"
+copy "$(ProjectDir)bin\2020Debug\*.dll" "$(AppData)\Autodesk\Revit\Addins\2020\ArcadisToolbar"
+)
+
+if $(ConfigurationName) == 2020Release (
+copy "$(ProjectDir)AddIn\*.addin" "$(AppData)\Autodesk\Revit\Addins\2020"
+copy "$(ProjectDir)bin\2020Release\*.dll" "$(AppData)\Autodesk\Revit\Addins\2020\ArcadisToolbar"
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
