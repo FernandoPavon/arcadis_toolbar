@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Autodesk.Revit.DB;
-using CommonTools;
 
 namespace ArcadisMain
 {
     public partial class About_Form : System.Windows.Forms.Form
     {
         public Document m_doc;
+        string revitVersion;
 
         public About_Form()
         {
@@ -41,30 +31,20 @@ namespace ArcadisMain
                 "\r\n1 July 2020";
 
 #if (Revit2018)
-            RevitVersionLabel.Text = "Revit Version 2018";
+            revitVersion = "Revit Version 2018";
 #elif (Revit2019)
-            RevitVersionLabel.Text = "Revit Version 2019";
+            revitVersion = "Revit Version 2019";
 #elif (Revit2020)
-            RevitVersionLabel.Text = "Revit Version 2020";
+            revitVersion = "Revit Version 2020";
 #endif
 
-            /*
-            if (Utils.g_old_arcadisToolbar_I_Version != Utils.g_arcadisToolbar_I_Version)
+            VersionsTextBox.AppendText("\u2022" + revitVersion);
+
+            foreach(AssemblyVersions assembly in Utils.s_assemblies)
             {
-                ArcadisToolbarILabel.Text = "(New) Arcadis Tollbar I Version: " + Utils.g_arcadisToolbar_I_Version;
-                ArcadisToolbarILabel.ForeColor = System.Drawing.Color.Red;
+                string line = "\r\n\r\n\u2022" + assembly.AssemblyName + "  Version: " + assembly.CurrentVersion;
+                VersionsTextBox.AppendText(line);
             }
-            else
-            {
-                ArcadisToolbarILabel.Text = "Arcadis Tollbar I Version: " + Utils.g_arcadisToolbar_I_Version;
-            }
-                
-            ArcadisToolbarIILabel.Text = "Arcadis Tollbar II Version: " + Utils.g_arcadisToolbar_II_Version;
-            ExportPanelLabel.Text = "Export Panel Version: " + Utils.g_ExportPanel_Version;
-            ImportPanelLabel.Text = "Import Panel Version: " + Utils.g_ImportPanel_Version;
-            MetricsTrackerLabel.Text = "Metrics Tracker Version: " + Utils.g_MetricsTracker_Version;
-            DynamicToolsLabel.Text = "Dynamic Tools Version: " + Utils.g_DynamicTools_Version;
-            */
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

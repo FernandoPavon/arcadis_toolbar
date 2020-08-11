@@ -85,7 +85,7 @@
             this.groupBox1.Controls.Add(this.ElectricalCheckBox);
             this.groupBox1.Controls.Add(this.ImportDataCheckBox);
             this.groupBox1.Controls.Add(this.ExportDataCheckBox);
-            this.groupBox1.Location = new System.Drawing.Point(598, 16);
+            this.groupBox1.Location = new System.Drawing.Point(261, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(384, 561);
             this.groupBox1.TabIndex = 4;
@@ -197,7 +197,7 @@
             this.groupBox2.Controls.Add(this.radioButton6);
             this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 121);
+            this.groupBox2.Location = new System.Drawing.Point(12, 262);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 100);
             this.groupBox2.TabIndex = 5;
@@ -242,7 +242,7 @@
             this.groupBox4.Controls.Add(this.radioButton9);
             this.groupBox4.Controls.Add(this.radioButton8);
             this.groupBox4.Controls.Add(this.radioButton7);
-            this.groupBox4.Location = new System.Drawing.Point(381, 16);
+            this.groupBox4.Location = new System.Drawing.Point(12, 150);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 100);
             this.groupBox4.TabIndex = 7;
@@ -284,7 +284,7 @@
             // 
             // BrowseFamilyButton
             // 
-            this.BrowseFamilyButton.Location = new System.Drawing.Point(27, 554);
+            this.BrowseFamilyButton.Location = new System.Drawing.Point(14, 614);
             this.BrowseFamilyButton.Name = "BrowseFamilyButton";
             this.BrowseFamilyButton.Size = new System.Drawing.Size(75, 23);
             this.BrowseFamilyButton.TabIndex = 0;
@@ -294,15 +294,15 @@
             // 
             // FamilyPathTextBox
             // 
-            this.FamilyPathTextBox.Location = new System.Drawing.Point(109, 555);
+            this.FamilyPathTextBox.Location = new System.Drawing.Point(96, 615);
             this.FamilyPathTextBox.Name = "FamilyPathTextBox";
-            this.FamilyPathTextBox.Size = new System.Drawing.Size(472, 20);
+            this.FamilyPathTextBox.Size = new System.Drawing.Size(549, 20);
             this.FamilyPathTextBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 535);
+            this.label1.Location = new System.Drawing.Point(14, 595);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 2;
@@ -311,7 +311,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 595);
+            this.label2.Location = new System.Drawing.Point(14, 655);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 10;
@@ -319,14 +319,14 @@
             // 
             // LogFilesTextBox
             // 
-            this.LogFilesTextBox.Location = new System.Drawing.Point(109, 615);
+            this.LogFilesTextBox.Location = new System.Drawing.Point(96, 675);
             this.LogFilesTextBox.Name = "LogFilesTextBox";
-            this.LogFilesTextBox.Size = new System.Drawing.Size(472, 20);
+            this.LogFilesTextBox.Size = new System.Drawing.Size(549, 20);
             this.LogFilesTextBox.TabIndex = 9;
             // 
             // BrowseLogButton
             // 
-            this.BrowseLogButton.Location = new System.Drawing.Point(27, 614);
+            this.BrowseLogButton.Location = new System.Drawing.Point(14, 674);
             this.BrowseLogButton.Name = "BrowseLogButton";
             this.BrowseLogButton.Size = new System.Drawing.Size(75, 23);
             this.BrowseLogButton.TabIndex = 8;
@@ -336,7 +336,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(753, 612);
+            this.CloseButton.Location = new System.Drawing.Point(820, 675);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 12;
@@ -347,9 +347,9 @@
             // ToolbarTreeView
             // 
             this.ToolbarTreeView.CheckBoxes = true;
-            this.ToolbarTreeView.Location = new System.Drawing.Point(229, 127);
+            this.ToolbarTreeView.Location = new System.Drawing.Point(672, 42);
             this.ToolbarTreeView.Name = "ToolbarTreeView";
-            this.ToolbarTreeView.Size = new System.Drawing.Size(352, 402);
+            this.ToolbarTreeView.Size = new System.Drawing.Size(352, 535);
             this.ToolbarTreeView.TabIndex = 13;
             this.ToolbarTreeView.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.ToolbarTreeView_BeforeCheck);
             this.ToolbarTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.ToolbarTreeView_AfterCheck);
@@ -357,7 +357,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 108);
+            this.label3.Location = new System.Drawing.Point(669, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 14;
@@ -368,7 +368,7 @@
             this.groupSubs.Controls.Add(this.BridgesCheckBox);
             this.groupSubs.Controls.Add(this.StructuralCheckBox);
             this.groupSubs.Controls.Add(this.ArchitecturalCheckbox);
-            this.groupSubs.Location = new System.Drawing.Point(12, 227);
+            this.groupSubs.Location = new System.Drawing.Point(12, 374);
             this.groupSubs.Name = "groupSubs";
             this.groupSubs.Size = new System.Drawing.Size(200, 109);
             this.groupSubs.TabIndex = 16;
@@ -409,9 +409,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Location = new System.Drawing.Point(12, 342);
+            this.groupBox3.Location = new System.Drawing.Point(14, 491);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 187);
+            this.groupBox3.Size = new System.Drawing.Size(200, 86);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Roles";
@@ -419,18 +419,18 @@
             // InfoTextBox
             // 
             this.InfoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.InfoTextBox.Location = new System.Drawing.Point(40, 12);
+            this.InfoTextBox.Location = new System.Drawing.Point(12, 24);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
             this.InfoTextBox.ReadOnly = true;
-            this.InfoTextBox.Size = new System.Drawing.Size(270, 93);
+            this.InfoTextBox.Size = new System.Drawing.Size(243, 122);
             this.InfoTextBox.TabIndex = 18;
             // 
             // Settings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 668);
+            this.ClientSize = new System.Drawing.Size(1049, 740);
             this.ControlBox = false;
             this.Controls.Add(this.InfoTextBox);
             this.Controls.Add(this.groupBox3);

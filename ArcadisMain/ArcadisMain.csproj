@@ -120,6 +120,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About_Command.cs" />
@@ -129,9 +130,12 @@
     <Compile Include="About_Form.Designer.cs">
       <DependentUpon>About_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArcadisRibbon.cs" />
+    <Compile Include="AssemblyVersions.cs" />
     <Compile Include="DocPreferences.cs" />
     <Compile Include="MainApp.cs" />
     <Compile Include="MainUserPreferences.cs" />
+    <Compile Include="Metrics.cs" />
     <Compile Include="Metrics_Command.cs" />
     <Compile Include="Metrics_Form.cs">
       <SubType>Form</SubType>
@@ -150,6 +154,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RibbonVisibility.cs" />
     <Compile Include="Settings_Command.cs" />
     <Compile Include="Settings_Form.cs">
       <SubType>Form</SubType>
@@ -157,18 +162,13 @@
     <Compile Include="Settings_Form.Designer.cs">
       <DependentUpon>Settings_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="VersionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VersionsForm.Designer.cs">
       <DependentUpon>VersionsForm.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
-      <Project>{2ef368c0-84f5-4540-b255-a18e6be528a9}</Project>
-      <Name>CommonTools</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

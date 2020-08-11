@@ -8,7 +8,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
-using CommonTools;
+
 using Autodesk.Windows;
 
 namespace ArcadisMain
@@ -26,15 +26,12 @@ namespace ArcadisMain
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            
-
             Metrics.StartCommand(doc, "About_Command", m_startTime);
 
             try
             {
                 var form = new About_Form();
                 form.m_doc = doc;
-
                 form.ShowDialog();
             }
             catch(Exception ex)

@@ -34,14 +34,8 @@
             this.TutorialsButton = new System.Windows.Forms.Button();
             this.ReferenceButton = new System.Windows.Forms.Button();
             this.UserButton = new System.Windows.Forms.Button();
-            this.RevitVersionLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DynamicToolsLabel = new System.Windows.Forms.Label();
-            this.MetricsTrackerLabel = new System.Windows.Forms.Label();
-            this.ImportPanelLabel = new System.Windows.Forms.Label();
-            this.ExportPanelLabel = new System.Windows.Forms.Label();
-            this.ArcadisToolbarIILabel = new System.Windows.Forms.Label();
-            this.ArcadisToolbarILabel = new System.Windows.Forms.Label();
+            this.VersionsTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -104,90 +98,31 @@
             this.UserButton.Text = "&User Guide";
             this.UserButton.UseVisualStyleBackColor = true;
             // 
-            // RevitVersionLabel
-            // 
-            this.RevitVersionLabel.AutoSize = true;
-            this.RevitVersionLabel.Location = new System.Drawing.Point(6, 26);
-            this.RevitVersionLabel.Name = "RevitVersionLabel";
-            this.RevitVersionLabel.Size = new System.Drawing.Size(70, 13);
-            this.RevitVersionLabel.TabIndex = 6;
-            this.RevitVersionLabel.Text = "Revit Version";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.DynamicToolsLabel);
-            this.groupBox1.Controls.Add(this.MetricsTrackerLabel);
-            this.groupBox1.Controls.Add(this.ImportPanelLabel);
-            this.groupBox1.Controls.Add(this.ExportPanelLabel);
-            this.groupBox1.Controls.Add(this.ArcadisToolbarIILabel);
-            this.groupBox1.Controls.Add(this.ArcadisToolbarILabel);
-            this.groupBox1.Controls.Add(this.RevitVersionLabel);
+            this.groupBox1.Controls.Add(this.VersionsTextBox);
             this.groupBox1.Location = new System.Drawing.Point(211, 363);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(385, 157);
+            this.groupBox1.Size = new System.Drawing.Size(385, 197);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product Versions Loaded";
             // 
-            // DynamicToolsLabel
+            // VersionsTextBox
             // 
-            this.DynamicToolsLabel.AutoSize = true;
-            this.DynamicToolsLabel.Location = new System.Drawing.Point(7, 130);
-            this.DynamicToolsLabel.Name = "DynamicToolsLabel";
-            this.DynamicToolsLabel.Size = new System.Drawing.Size(77, 13);
-            this.DynamicToolsLabel.TabIndex = 12;
-            this.DynamicToolsLabel.Text = "Dynamic Tools";
-            // 
-            // MetricsTrackerLabel
-            // 
-            this.MetricsTrackerLabel.AutoSize = true;
-            this.MetricsTrackerLabel.Location = new System.Drawing.Point(7, 113);
-            this.MetricsTrackerLabel.Name = "MetricsTrackerLabel";
-            this.MetricsTrackerLabel.Size = new System.Drawing.Size(81, 13);
-            this.MetricsTrackerLabel.TabIndex = 11;
-            this.MetricsTrackerLabel.Text = "Metrics Tracker";
-            // 
-            // ImportPanelLabel
-            // 
-            this.ImportPanelLabel.AutoSize = true;
-            this.ImportPanelLabel.Location = new System.Drawing.Point(7, 96);
-            this.ImportPanelLabel.Name = "ImportPanelLabel";
-            this.ImportPanelLabel.Size = new System.Drawing.Size(66, 13);
-            this.ImportPanelLabel.TabIndex = 10;
-            this.ImportPanelLabel.Text = "Import Panel";
-            // 
-            // ExportPanelLabel
-            // 
-            this.ExportPanelLabel.AutoSize = true;
-            this.ExportPanelLabel.Location = new System.Drawing.Point(7, 79);
-            this.ExportPanelLabel.Name = "ExportPanelLabel";
-            this.ExportPanelLabel.Size = new System.Drawing.Size(67, 13);
-            this.ExportPanelLabel.TabIndex = 9;
-            this.ExportPanelLabel.Text = "Export Panel";
-            // 
-            // ArcadisToolbarIILabel
-            // 
-            this.ArcadisToolbarIILabel.AutoSize = true;
-            this.ArcadisToolbarIILabel.Location = new System.Drawing.Point(7, 62);
-            this.ArcadisToolbarIILabel.Name = "ArcadisToolbarIILabel";
-            this.ArcadisToolbarIILabel.Size = new System.Drawing.Size(87, 13);
-            this.ArcadisToolbarIILabel.TabIndex = 8;
-            this.ArcadisToolbarIILabel.Text = "ArcadisToolbar II";
-            // 
-            // ArcadisToolbarILabel
-            // 
-            this.ArcadisToolbarILabel.AutoSize = true;
-            this.ArcadisToolbarILabel.Location = new System.Drawing.Point(7, 43);
-            this.ArcadisToolbarILabel.Name = "ArcadisToolbarILabel";
-            this.ArcadisToolbarILabel.Size = new System.Drawing.Size(84, 13);
-            this.ArcadisToolbarILabel.TabIndex = 7;
-            this.ArcadisToolbarILabel.Text = "ArcadisToolbar I";
+            this.VersionsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VersionsTextBox.Location = new System.Drawing.Point(44, 31);
+            this.VersionsTextBox.Multiline = true;
+            this.VersionsTextBox.Name = "VersionsTextBox";
+            this.VersionsTextBox.ReadOnly = true;
+            this.VersionsTextBox.Size = new System.Drawing.Size(320, 147);
+            this.VersionsTextBox.TabIndex = 0;
             // 
             // About_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 532);
+            this.ClientSize = new System.Drawing.Size(754, 585);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.UserButton);
@@ -217,13 +152,7 @@
         private System.Windows.Forms.Button TutorialsButton;
         private System.Windows.Forms.Button ReferenceButton;
         private System.Windows.Forms.Button UserButton;
-        private System.Windows.Forms.Label RevitVersionLabel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label ArcadisToolbarILabel;
-        private System.Windows.Forms.Label ArcadisToolbarIILabel;
-        private System.Windows.Forms.Label DynamicToolsLabel;
-        private System.Windows.Forms.Label MetricsTrackerLabel;
-        private System.Windows.Forms.Label ImportPanelLabel;
-        private System.Windows.Forms.Label ExportPanelLabel;
+        private System.Windows.Forms.TextBox VersionsTextBox;
     }
 }

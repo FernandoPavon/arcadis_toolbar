@@ -1,14 +1,9 @@
 C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\ArcadisMain.dll.config
 C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\ArcadisMain.dll
 C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\ArcadisMain.pdb
-C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\CommonTools.dll
-C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\CommonTools.pdb
-C:\Arcadis_Toolbars\ArcadisMain\bin\2018Debug\CommonTools.dll.config
-C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csprojAssemblyReference.cache
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.VersionsForm.resources
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.GenerateResource.cache
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.CoreCompileInputs.cache
-C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.CopyComplete
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.dll
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.pdb
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.g.resources

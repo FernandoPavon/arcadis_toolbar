@@ -36,7 +36,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Drawing;
 using Autodesk.Revit.UI;
-using CommonTools;
+
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
@@ -47,7 +47,7 @@ namespace ArcadisMain
     {
         DateTime m_startTime;
         private string m_revitAddinPath;
-        private readonly IList<AssemblyVersions> NewAssemblies = new List<AssemblyVersions>();
+        private readonly IList<AssemblyVersions> newAssemblies = new List<AssemblyVersions>();
 
         public Result OnStartup(UIControlledApplication application)
         {
@@ -102,7 +102,8 @@ namespace ArcadisMain
                     "Electrical_Panel.dll",
                     "DynamicTools.dll",
                     "Import_Panel.dll",
-                    "Export_Panel.dll"
+                    "Export_Panel.dll",
+                    "Cable_Panel.dll"
                 };
 
                 //string[] files = Directory.GetFiles(arcadisRepository);
@@ -115,22 +116,25 @@ namespace ArcadisMain
                     string revitVersion = FileVersionInfo.GetVersionInfo(revitPath).ProductVersion;
                     string repoVersion = FileVersionInfo.GetVersionInfo(repoPath).ProductVersion;
 
+                    AssemblyVersions module = new AssemblyVersions();
+                    module.AssemblyName = assemblyName;
+                    module.CurrentVersion = revitVersion;
+                    module.RepositoryVersion = repoVersion;
+                    Utils.s_assemblies.Add(module);
+
                     if (repoVersion != revitVersion)
                     {
-                        AssemblyVersions module = new AssemblyVersions();
-                        module.AssemblyName = assemblyName;
-                        module.CurrentVersion = revitVersion;
-                        module.RepositoryVersion = repoVersion;
-                        NewAssemblies.Add(module);
+                        newAssemblies.Add(module);
                     }
                 }
 
-                if (NewAssemblies.Count > 0)
+                if (newAssemblies.Count > 0)
                 {
                     VersionsForm form = new VersionsForm();
+                    form.NewAssemblies = newAssemblies;
                     form.RevitAddInPath = m_revitAddinPath;
                     form.RepositoryPath = arcadisRepository;
-                    form.NewAssemblies = NewAssemblies;
+                    
                     form.ShowDialog();
                 }
 
@@ -214,13 +218,5 @@ namespace ArcadisMain
 
             return Result.Succeeded;
         }
-    }
-
-    public class AssemblyVersions
-    {
-        public string AssemblyName  {get; set;}
-        public string RepositoryVersion { get; set; }
-        public string CurrentVersion { get; set; }
-
     }
 }

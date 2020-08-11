@@ -119,9 +119,9 @@
     <Resource Include="Resources\ExportData.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
-      <Project>{2ef368c0-84f5-4540-b255-a18e6be528a9}</Project>
-      <Name>CommonTools</Name>
+    <ProjectReference Include="..\ArcadisMain\ArcadisMain.csproj">
+      <Project>{6dd11cdb-278c-4aab-bc2a-0dde85b3563d}</Project>
+      <Name>ArcadisMain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

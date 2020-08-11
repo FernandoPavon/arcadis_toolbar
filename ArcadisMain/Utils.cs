@@ -7,13 +7,12 @@ using System.Windows.Media.Imaging;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using static CommonTools.RibbonVisibility;
-using CommonTools;
+
 using System.Windows.Media;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
 
-namespace CommonTools
+namespace ArcadisMain
 {
 
     public class Utils

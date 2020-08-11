@@ -5,8 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Autodesk.Revit.UI;
-using CommonTools;
-using static CommonTools.RibbonVisibility;
 using Autodesk.Revit.DB;
 
 namespace ArcadisMain
@@ -154,8 +152,8 @@ namespace ArcadisMain
             }
 
             string jsonOut = new JavaScriptSerializer().Serialize(ribbonVisibility);
-            CommonTools.Properties.Settings.Default.Toolbar_UserPreferences = jsonOut;
-            CommonTools.Properties.Settings.Default.Save();
+            Properties.Settings.Default.Toolbar_UserPreferences = jsonOut;
+            Properties.Settings.Default.Save();
 
             ToolbarTreeView.ExpandAll();
         }

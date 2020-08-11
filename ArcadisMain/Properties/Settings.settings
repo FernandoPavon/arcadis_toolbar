@@ -5,5 +5,8 @@
     <Setting Name="Settings_UserPreferences" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Toolbar_UserPreferences" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

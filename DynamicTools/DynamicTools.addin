@@ -4,7 +4,7 @@
   <AddIn Type="Application">
     <Name>Arcadis Dynamic Tools</Name>
     <Assembly>DynamicTools.dll</Assembly>
-    <FullClassName>DynamicTools.App</FullClassName>
+    <FullClassName>DynamicTools.AppDynamic</FullClassName>
     <ClientId>D31C84B7-EA93-4069-81E3-69052B6F7F86</ClientId>
     <VendorId>Autodesk</VendorId>
     <VendorDescription>EMEA Consulting</VendorDescription>
