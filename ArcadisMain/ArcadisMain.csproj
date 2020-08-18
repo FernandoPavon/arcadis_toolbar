@@ -221,25 +221,13 @@
     <Resource Include="Resources\SettingsHelp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Tab40.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Arcadis.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\electricalPanel.png" />
+    <Resource Include="Resources\Tab20.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\exportPanel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\cablePanel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\importPanel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\dynamicPanel.png" />
+    <Content Include="Resources\Panel20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

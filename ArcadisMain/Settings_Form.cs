@@ -23,19 +23,6 @@ namespace ArcadisMain
 
         private void Settings_Form_Load(object sender, EventArgs e)
         {
-            Image image;
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(44, 16);
-            image = Properties.Resources.Tab40;
-            imageList.Images.Add(image);
-            image = Properties.Resources.Panel44;
-            imageList.Images.Add(image);
-            image = Properties.Resources.Button44;
-            imageList.Images.Add(image);
-
-            ToolbarTreeView.ImageList = imageList;
-            ToolbarTreeView.Indent = 20;
-            ToolbarTreeView.ItemHeight = 22;
 
             InfoTextBox.AppendText("\u2022System Country: " + Utils.k_systemCountry);
             InfoTextBox.AppendText("\r\n\r\n\u2022System Language: " + Utils.k_systemLanguage);
@@ -46,7 +33,7 @@ namespace ArcadisMain
 
             MainUserPreferences up = MainUserPreferences.GetUserPreferences();
             CableCheckBox.Checked = up.CableCheckBox;
-            DynamicCheckBox.Checked = up.DynamicCheckBox;
+            DynCheckBox.Checked = up.DynamicCheckBox;
             ElectricalCheckBox.Checked = up.ElectricalCheckBox;
             ExportDataCheckBox.Checked = up.ExportDataCheckBox;
             ImportDataCheckBox.Checked = up.ImportDataCheckBox;
@@ -69,7 +56,35 @@ namespace ArcadisMain
         {
             isLoading = true;
 
+            Size size = new Size(20, 20);
+            Image image;
+            ImageList imageList = new ImageList();
+
+            imageList.ImageSize = size; // Size(44, 16);
+            image = Properties.Resources.Tab20; //.Tab40;
+            imageList.Images.Add(image);
+            image = Properties.Resources.Panel20; //.Panel44;
+            imageList.Images.Add(image);
+
+            foreach (ToolbarTab tab in Utils.s_arcadisRibbon.Tabs)
+            {
+                foreach (ToolbarPanel panel in tab.Panels)
+                {
+                    foreach (ToolbarCommand com in panel.Commands)
+                    {
+                        image = com.Bitmap;
+                        imageList.Images.Add(image);
+                    }
+                }
+            }
+
+            ToolbarTreeView.ImageList = imageList;
+            ToolbarTreeView.Indent = 20;
+            ToolbarTreeView.ItemHeight = 30;
+
             ToolbarTreeView.Nodes.Clear();
+
+            int index = 2;
 
             foreach (ToolbarTab tab in Utils.s_arcadisRibbon.Tabs)
             {
@@ -101,9 +116,11 @@ namespace ArcadisMain
                     {
                         TreeNode nodeCommand = nodePanel.Nodes.Add(com.CommandName, com.CommandName);
                         nodeCommand.Checked = com.Command.Visible;
-                        nodeCommand.ImageIndex = 2;
-                        nodeCommand.SelectedImageIndex = 2;
+                        
+                        nodeCommand.ImageIndex = index;
+                        nodeCommand.SelectedImageIndex = index;
                         nodeCommand.NodeFont = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);
+                        index++;
                     }
                 }
             }
@@ -169,7 +186,7 @@ namespace ArcadisMain
             //---------------------
             MainUserPreferences up = new MainUserPreferences();
             up.CableCheckBox = CableCheckBox.Checked;
-            up.DynamicCheckBox = DynamicCheckBox.Checked;
+            up.DynamicCheckBox = DynCheckBox.Checked;
             up.ElectricalCheckBox = ElectricalCheckBox.Checked;
             up.ExportDataCheckBox = ExportDataCheckBox.Checked;
             up.ImportDataCheckBox = ImportDataCheckBox.Checked;
@@ -244,114 +261,104 @@ namespace ArcadisMain
             ApplyRibbon();
         }
 
-        private void DynamicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (DynamicCheckBox.Checked)
-            {
-                try
-                {
-                    if (Utils.b_dynamicTools == true) return;
-                    Utils.b_dynamicTools = Utils.LoadAddin(Utils.k_dynamicAddin, Utils.b_dynamicTools);
-                    TreeViewFromRibbon();
-                }
-                catch(Exception ex)
-                {
-                    TaskDialog.Show("Exception", ex.Message);
-                }
-            }
-            else
-            {
-                TaskDialog.Show("Unloading Tools", "Unloading Dynamic Tools");
-            }
-        }
-
         private void ElectricalCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (ElectricalCheckBox.Checked)
             {
-                try
+                if (Utils.b_electricalTools != true)
                 {
-                    if (Utils.b_electricalTools == true) return;
-                    Utils.b_electricalTools = Utils.LoadAddin(Utils.k_electricalAddin, Utils.b_electricalTools);
-                    TreeViewFromRibbon();
+                    try
+                    {
+                        Utils.b_electricalTools = Utils.LoadAddin(Utils.k_electricalAddin, Utils.b_electricalTools);
+                    }
+                    catch (Exception ex)
+                    {
+                        Metrics.AppendLog("Exception in loading Electrical Addin:\r\n" + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    TaskDialog.Show("Exception", ex.Message);
-                }
+                CheckPanel(Utils.k_arcadisMainTab, Utils.k_electricalPanel, true);
             }
             else
             {
                 CheckPanel(Utils.k_arcadisMainTab, Utils.k_electricalPanel, false);
-                ApplyRibbon();
             }
+            ApplyRibbon();
+            TreeViewFromRibbon();
         }
 
         private void CableCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (CableCheckBox.Checked)
             {
-                try
+                if (Utils.b_cableTools != true)
                 {
-                    if (Utils.b_cableTools == true) return;
-                    Utils.b_cableTools = Utils.LoadAddin(Utils.k_cableAddin, Utils.b_cableTools);
-                    TreeViewFromRibbon();
+                    try
+                    {
+                        Utils.b_cableTools = Utils.LoadAddin(Utils.k_cableAddin, Utils.b_cableTools);
+                    }
+                    catch (Exception ex)
+                    {
+                        Metrics.AppendLog("Exception in loading Cable Addin:\r\n" + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    TaskDialog.Show("Exception", ex.Message);
-                }
+                CheckPanel(Utils.k_arcadisMainTab, Utils.k_cablePanel, true);
             }
             else
             {
-                CheckPanel(Utils.k_arcadisMainTab, Utils.k_cablePanel, false);
-                ApplyRibbon();
+                CheckPanel(Utils.k_arcadisMainTab, Utils.k_cablePanel, false); 
             }
+            ApplyRibbon();
+            TreeViewFromRibbon();
         }
 
         private void ExportDataCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (ExportDataCheckBox.Checked)
             {
-                try
+                if (Utils.b_exportTools != true)
                 {
-                    if (Utils.b_exportTools == true) return;
-                    Utils.b_exportTools = Utils.LoadAddin(Utils.k_exportAddin, Utils.b_exportTools );
-                    TreeViewFromRibbon();
+                    try
+                    {
+                        Utils.b_exportTools = Utils.LoadAddin(Utils.k_exportAddin, Utils.b_exportTools);
+                    }
+                    catch (Exception ex)
+                    {
+                        Metrics.AppendLog("Exception in loading Export Addin:\r\n" + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    TaskDialog.Show("Exception", ex.Message);
-                }
+                CheckPanel(Utils.k_arcadisMainTab, Utils.k_exportPanel, true);
             }
             else
             {
                 CheckPanel(Utils.k_arcadisMainTab, Utils.k_exportPanel, false);
-                ApplyRibbon();
             }
+            ApplyRibbon();
+            TreeViewFromRibbon();
         }
 
         private void ImportDataCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (ImportDataCheckBox.Checked)
             {
-                try
+                if (Utils.b_importTools != true)
                 {
-                    if (Utils.b_importTools == true) return;
-                    Utils.b_importTools = Utils.LoadAddin(Utils.k_importAddin, Utils.b_importTools);
-                    TreeViewFromRibbon();
+                    try
+                    {
+                        Utils.b_importTools = Utils.LoadAddin(Utils.k_importAddin, Utils.b_importTools);
+                    }
+                    catch (Exception ex)
+                    {
+                        Metrics.AppendLog("Exception in loading Import Addin:\r\n" + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    TaskDialog.Show("Exception", ex.Message);
-                }
+                CheckPanel(Utils.k_arcadisMainTab, Utils.k_importPanel, true);
             }
             else
             {
                 CheckPanel(Utils.k_arcadisMainTab, Utils.k_importPanel, false);
-                ApplyRibbon();
             }
-
+            ApplyRibbon();
+            TreeViewFromRibbon();
         }
 
         private void CheckPanel(string tabName, string panelName, bool check)
@@ -365,6 +372,11 @@ namespace ArcadisMain
                         if(panelNode.Text == panelName)
                         {
                             panelNode.Checked = check;
+
+                            foreach(TreeNode com in panelNode.Nodes)
+                            {
+                                com.Checked = check;
+                            }
                         }
                     }
                 }
@@ -394,6 +406,27 @@ namespace ArcadisMain
                 {
                     LogFilesTextBox.Text = fbd.SelectedPath;
                 }
+            }
+        }
+
+        private void DynCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DynCheckBox.Checked)
+            {
+                try
+                {
+                    if (Utils.b_dynamicTools == true) return;
+                    Utils.b_dynamicTools = Utils.LoadAddin(Utils.k_dynamicAddin, Utils.b_dynamicTools);
+                    TreeViewFromRibbon();
+                }
+                catch (Exception ex)
+                {
+                    Metrics.AppendLog("Exception in loading Dynamic Addin:\r\n" + ex.Message);
+                }
+            }
+            else
+            {
+                TaskDialog.Show("Unloading Tools", "Unloading Dynamic Tools");
             }
         }
     }

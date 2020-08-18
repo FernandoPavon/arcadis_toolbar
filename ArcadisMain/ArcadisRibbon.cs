@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Autodesk.Revit.UI;
+using System.Drawing;
 
 namespace ArcadisMain
 {
@@ -45,11 +46,13 @@ namespace ArcadisMain
     {
         public string CommandName { get; set; }
         public PushButton Command { get; set; }
+        public Bitmap Bitmap { get; set; }
 
-        public ToolbarCommand(string name, PushButton command)
+        public ToolbarCommand(string name, PushButton command, Bitmap bitmap)
         {
             CommandName = name;
             Command = command;
+            Bitmap = bitmap;
         }
     }
 }

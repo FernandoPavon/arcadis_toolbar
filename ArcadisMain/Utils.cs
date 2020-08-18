@@ -344,7 +344,7 @@ namespace ArcadisMain
                 if (null != bitmapHelp) button.ToolTipImage = ConvertBitmap(bitmapHelp);
                 button.LongDescription = longDesc;
                 button.SetContextualHelp(contextHelp);
-                toolPanel.Commands.Add(new ToolbarCommand(name, button));
+                toolPanel.Commands.Add(new ToolbarCommand(name, button, bitmap));
             }
             catch (Exception ex)
             {

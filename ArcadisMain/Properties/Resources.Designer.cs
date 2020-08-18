@@ -103,56 +103,6 @@ namespace ArcadisMain.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cablePanel {
-            get {
-                object obj = ResourceManager.GetObject("cablePanel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap dynamicPanel {
-            get {
-                object obj = ResourceManager.GetObject("dynamicPanel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap electricalPanel {
-            get {
-                object obj = ResourceManager.GetObject("electricalPanel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap exportPanel {
-            get {
-                object obj = ResourceManager.GetObject("exportPanel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap importPanel {
-            get {
-                object obj = ResourceManager.GetObject("importPanel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Info {
             get {
                 object obj = ResourceManager.GetObject("Info", resourceCulture);
@@ -166,6 +116,16 @@ namespace ArcadisMain.Properties {
         internal static System.Drawing.Bitmap MetricsHelp {
             get {
                 object obj = ResourceManager.GetObject("MetricsHelp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Panel20 {
+            get {
+                object obj = ResourceManager.GetObject("Panel20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +163,9 @@ namespace ArcadisMain.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tab40 {
+        internal static System.Drawing.Bitmap Tab20 {
             get {
-                object obj = ResourceManager.GetObject("Tab40", resourceCulture);
+                object obj = ResourceManager.GetObject("Tab20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
