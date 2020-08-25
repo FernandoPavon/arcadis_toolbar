@@ -18,7 +18,7 @@ namespace ArcadisMain
     public class Utils
     {
         public static ArcadisRibbon s_arcadisRibbon = new ArcadisRibbon();
-        public static IList<AssemblyVersions> s_assemblies = new List<AssemblyVersions>();
+        public static IList<AssemblyVersion> s_assemblies = new List<AssemblyVersion>();
 
         //Repository
         public const string k_repository = "c:\\Arcadis_AddIn_Repository";
@@ -26,7 +26,7 @@ namespace ArcadisMain
         public const string k_arcadisMainTab = "Arcadis Main"; 
         public const string k_arcadisToolsTab = "Arcadis Tools";
         //Panel Names
-        public const string k_arcadisPanel = "Arcadis Tools";
+        public const string k_arcadisPanel = "Main Panel";
         public const string k_exportPanel = "Export Tools";
         public const string k_importPanel = "Import Tools";
         public const string k_dynamicPanel = "Dynamic Tools";
@@ -77,104 +77,7 @@ namespace ArcadisMain
             return true;
         }
 
-        public static void SetRibbonVisibility()
-        {
-            string json = Properties.Settings.Default.Toolbar_UserPreferences;
-            if (null == json || json.Length < 1) return;
-
-            RibbonVisibility jsonToolbars = JsonConvert.DeserializeObject<RibbonVisibility>(json);
-
-            foreach (ToolbarTab toolbarTab in s_arcadisRibbon.Tabs)
-            {
-                TabVis tabVis = GetJsonTab(jsonToolbars, toolbarTab.TabName);
-                if (null == tabVis)
-                {
-                    toolbarTab.RibbonTab.IsVisible = true;
-                    continue;
-                }
-
-                if (toolbarTab.TabName == tabVis.TabName)
-                {
-                    if (tabVis.TabName == Utils.k_arcadisMainTab)
-                    {
-                        toolbarTab.RibbonTab.IsVisible = true;
-                    }
-                    else
-                    {
-                        if (null != tabVis) toolbarTab.RibbonTab.IsVisible = tabVis.Visible;
-                    }
-                }
-
-                foreach (ToolbarPanel toolbarPanel in toolbarTab.Panels)
-                {
-                    PanelVis panelVis = GetJsonPanel(jsonToolbars, toolbarTab.TabName, toolbarPanel.PanelName);
-                    if (null != panelVis) toolbarPanel.Panel.Visible = panelVis.Visible;
-
-                    foreach (ToolbarCommand toolbarCommand in toolbarPanel.Commands)
-                    {
-                        CommandVis commandVis = GetJsonCommand(jsonToolbars, toolbarTab.TabName, toolbarPanel.PanelName, toolbarCommand.CommandName);
-                        if (null != commandVis) toolbarCommand.Command.Visible = commandVis.Visible;
-                    }
-                }
-            }
-        }
-            
-        public static TabVis GetJsonTab(RibbonVisibility ribbon, string tab)
-        {
-            foreach (TabVis tabVis in ribbon.Tabs)
-            {
-                if (tabVis.TabName == tab)
-                {
-                    return tabVis;
-                }
-            }
-            return null;
-        }
-
-        public static PanelVis GetJsonPanel(RibbonVisibility ribbon, string strTab, string strPanel)
-        {
-            foreach (TabVis tabVis in ribbon.Tabs)
-            {
-                if (tabVis.TabName == strTab)
-                {
-                    foreach (PanelVis panelVis in tabVis.Panels)
-                    {
-                        if (panelVis.PanelName == strPanel)
-                        {
-                            return panelVis;
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        public static CommandVis GetJsonCommand(RibbonVisibility ribbon, string strTab, string strPanel, string strCommand)
-        {
-            foreach (TabVis tabVis in ribbon.Tabs)
-            {
-                if (tabVis.TabName == strTab)
-                {
-                    foreach (PanelVis panelVis in tabVis.Panels)
-                    {
-                        if (panelVis.PanelName == strPanel)
-                        {
-                            foreach (CommandVis commandVis in panelVis.Commands)
-                            {
-                                if (commandVis.CommandName == strCommand)
-                                {
-                                    return commandVis;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        
-
+       
         //Shared Parameters
         //-----------------
         public static bool CheckCreateProjectParameter(Document doc, string param, BuiltInCategory bicCheck)
@@ -371,6 +274,16 @@ namespace ArcadisMain
                 return null;
             }
         }
+    }
+
+    //Assembly Classes
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public  class AssemblyGeography : Attribute
+    {
+        public string Value { get; private set; }
+
+        public AssemblyGeography() : this("") { }
+        public AssemblyGeography(string value) { Value = value; }
     }
 }
 

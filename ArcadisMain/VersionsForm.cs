@@ -18,12 +18,12 @@ namespace ArcadisMain
     {
         private string m_revitAddinPath;
         private string m_repositoryPath;
-        private IList<AssemblyVersions> newAssemblies;
+        private IList<AssemblyVersion> newAssemblies;
 
         public string RevitAddInPath { set { m_revitAddinPath = value; } }
         public string RepositoryPath { set { m_repositoryPath = value; } }
 
-        public IList<AssemblyVersions> NewAssemblies { set {newAssemblies = value; } }
+        public IList<AssemblyVersion> NewAssemblies { set {newAssemblies = value; } }
 
         public VersionsForm()
         {
@@ -36,7 +36,7 @@ namespace ArcadisMain
 
             string[] items = new string[3];
 
-            foreach(AssemblyVersions assembly in newAssemblies)
+            foreach(AssemblyVersion assembly in newAssemblies)
             {
                 items[0] = Path.GetFileNameWithoutExtension(assembly.AssemblyName);
                 items[1] = assembly.RepositoryVersion;

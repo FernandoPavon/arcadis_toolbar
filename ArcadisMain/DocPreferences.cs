@@ -16,5 +16,8 @@ namespace ArcadisMain
         [JsonProperty("logPath")]
         public string LogPath { get; set; }
 
+        [JsonProperty("repoPath")]
+        public string RepoPath { get; set; }
+
     }
 }

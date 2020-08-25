@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using ArcadisMain;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -37,3 +39,7 @@ using System.Runtime.InteropServices;
 
 //Product Version
 [assembly: AssemblyInformationalVersion("1.1.5")]
+
+[assembly: AssemblyGeography("Australia")]
+
+

@@ -34,17 +34,5 @@ namespace ArcadisMain.Properties {
                 this["Settings_UserPreferences"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Toolbar_UserPreferences {
-            get {
-                return ((string)(this["Toolbar_UserPreferences"]));
-            }
-            set {
-                this["Toolbar_UserPreferences"] = value;
-            }
-        }
     }
 }

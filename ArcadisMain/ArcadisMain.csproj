@@ -131,7 +131,7 @@
       <DependentUpon>About_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="ArcadisRibbon.cs" />
-    <Compile Include="AssemblyVersions.cs" />
+    <Compile Include="AssemblyVersion.cs" />
     <Compile Include="DocPreferences.cs" />
     <Compile Include="MainApp.cs" />
     <Compile Include="MainUserPreferences.cs" />
@@ -154,7 +154,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RibbonVisibility.cs" />
+    <Compile Include="Ribbon_Command.cs" />
+    <Compile Include="Ribbon_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon_Form.Designer.cs">
+      <DependentUpon>Ribbon_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings_Command.cs" />
     <Compile Include="Settings_Form.cs">
       <SubType>Form</SubType>
@@ -188,6 +194,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon_Form.resx">
+      <DependentUpon>Ribbon_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings_Form.resx">
       <DependentUpon>Settings_Form.cs</DependentUpon>
@@ -228,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Panel20.png" />
+    <Resource Include="Resources\Ribbon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

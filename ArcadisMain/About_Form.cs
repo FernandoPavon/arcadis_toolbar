@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media;
 using Autodesk.Revit.DB;
 
 namespace ArcadisMain
@@ -15,6 +16,8 @@ namespace ArcadisMain
 
         private void About_Form_Load(object sender, EventArgs e)
         {
+            
+
             AboutTextBox.Text = "Copyright 2020 Autodesk, Inc. All rights reserved. " +
                 "\r\n\r\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR" +
                 "\r\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY," +
@@ -37,12 +40,26 @@ namespace ArcadisMain
 #elif (Revit2020)
             revitVersion = "Revit Version 2020";
 #endif
+            InfoTextBox.AppendText("\u2022Revit Version: " + Utils.k_revitVersion);
+            InfoTextBox.AppendText("\r\n\r\n\u2022Revit Language: " + Utils.k_revitLanguage);
+            InfoTextBox.AppendText("\r\n\r\n\u2022System Country: " + Utils.k_systemCountry);
+            InfoTextBox.AppendText("\r\n\r\n\u2022System Language: " + Utils.k_systemLanguage);
 
-            VersionsTextBox.AppendText("\u2022" + revitVersion);
+            //VersionsTextBox.AppendText("\u2022" + revitVersion);
 
-            foreach(AssemblyVersions assembly in Utils.s_assemblies)
+            string strGeo = string.Empty;
+
+            foreach (AssemblyVersion assembly in Utils.s_assemblies)
             {
-                string line = "\r\n\r\n\u2022" + assembly.AssemblyName + "  Version: " + assembly.CurrentVersion;
+                if (assembly.Geography != "")
+                {
+                    strGeo = assembly.Geography;
+                }
+                else
+                {
+                    strGeo = "";
+                }
+                string line = "\u2022" + assembly.AssemblyName + "  Version: " + assembly.CurrentVersion + " " + strGeo + "\r\n\r\n";
                 VersionsTextBox.AppendText(line);
             }
         }

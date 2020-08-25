@@ -47,7 +47,7 @@ namespace ArcadisMain
     {
         DateTime m_startTime;
         private string m_revitAddinPath;
-        private readonly IList<AssemblyVersions> newAssemblies = new List<AssemblyVersions>();
+        private readonly IList<AssemblyVersion> newAssemblies = new List<AssemblyVersion>();
 
         public Result OnStartup(UIControlledApplication application)
         {
@@ -116,7 +116,7 @@ namespace ArcadisMain
                     string revitVersion = FileVersionInfo.GetVersionInfo(revitPath).ProductVersion;
                     string repoVersion = FileVersionInfo.GetVersionInfo(repoPath).ProductVersion;
 
-                    AssemblyVersions module = new AssemblyVersions();
+                    AssemblyVersion module = new AssemblyVersion();
                     module.AssemblyName = assemblyName;
                     module.CurrentVersion = revitVersion;
                     module.RepositoryVersion = repoVersion;
@@ -166,6 +166,12 @@ namespace ArcadisMain
                 helpURL = "https://help.autodesk.com/view/RVT/2020/ENU/?guid=GUID-35DE66AB-6EF5-48C0-B477-F3B1B120F18A";
                 contextHelp = new ContextualHelp(ContextualHelpType.Url, helpURL);
                 Utils.CreateCommand(panel, toolPanel, Utils.k_settings, Utils.k_settings, locPath, strCommand, bitmap, "Arcadis Toolbar Settings", bitmapHelp, longDesc, contextHelp);
+
+                strCommand = "ArcadisMain.Ribbon_Command";
+                bitmap = Properties.Resources.Ribbon;
+                bitmapHelp = Properties.Resources.MetricsHelp;
+                Utils.CreateCommand(panel, toolPanel, "Ribbon", "Ribbon", locPath, strCommand, bitmap, "Select Tools for Ribbon", bitmapHelp, longDesc, contextHelp);
+
 
                 strCommand = "ArcadisMain.Metrics_Command";
                 bitmap = Properties.Resources.BarChart2;

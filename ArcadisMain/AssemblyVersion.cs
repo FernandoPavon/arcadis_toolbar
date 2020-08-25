@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ArcadisMain
 {
-    public class AssemblyVersions
+    public class AssemblyVersion
     {
         public string AssemblyName { get; set; }
         public string RepositoryVersion { get; set; }
         public string CurrentVersion { get; set; }
+        public string Geography { get; set; }
     }
 }

@@ -29,7 +29,19 @@ namespace Cable_Panel
                 //Get Assembly Versions
                 //Utils.g_DynamicTools_Version = exeAssembly.GetName().Version.ToString();
 
+                var geography = exeAssembly.GetCustomAttributes(typeof(AssemblyGeography), false)[0];
+                string geo = ((AssemblyGeography)geography).Value;
+
+                foreach (AssemblyVersion assembly in Utils.s_assemblies)
+                {
+                    if (assembly.AssemblyName == "Cable_Panel.dll")
+                    {
+                        assembly.Geography = geo;
+                    }
+                }
+
                 Metrics.AppendLog("\r\nLoading Cable Panel");
+                Metrics.AppendLog("Geography: " + geo);
                 Metrics.AppendLog("Toolbar Tab: " + arcadisTab);
                 Metrics.AppendLog("Assembly Path: " + assemblyPath);
                 Metrics.AppendLog("Session Start: " + m_startTime.ToString());
@@ -40,11 +52,12 @@ namespace Cable_Panel
                     if (arcadisTab.Equals(tab.TabName))
                     {
                         toolTab = tab;
+                        
                         break;
                     }
                 }
 
-                //Electrical Panel
+                //Cable Panel
                 //-----------------------
                 RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_cablePanel);
                 ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);

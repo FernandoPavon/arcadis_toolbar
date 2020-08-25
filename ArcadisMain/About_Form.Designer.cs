@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.AboutTextBox = new System.Windows.Forms.TextBox();
             this.TutorialsButton = new System.Windows.Forms.Button();
@@ -36,23 +35,17 @@
             this.UserButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.VersionsTextBox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.InfoTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ArcadisMain.Properties.Resources.Arcadis;
-            this.pictureBox1.Location = new System.Drawing.Point(264, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(220, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(640, 493);
+            this.CloseButton.Location = new System.Drawing.Point(645, 537);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 1;
@@ -73,7 +66,7 @@
             // 
             // TutorialsButton
             // 
-            this.TutorialsButton.Location = new System.Drawing.Point(45, 406);
+            this.TutorialsButton.Location = new System.Drawing.Point(620, 423);
             this.TutorialsButton.Name = "TutorialsButton";
             this.TutorialsButton.Size = new System.Drawing.Size(122, 23);
             this.TutorialsButton.TabIndex = 3;
@@ -82,7 +75,7 @@
             // 
             // ReferenceButton
             // 
-            this.ReferenceButton.Location = new System.Drawing.Point(45, 435);
+            this.ReferenceButton.Location = new System.Drawing.Point(620, 452);
             this.ReferenceButton.Name = "ReferenceButton";
             this.ReferenceButton.Size = new System.Drawing.Size(122, 23);
             this.ReferenceButton.TabIndex = 4;
@@ -91,7 +84,7 @@
             // 
             // UserButton
             // 
-            this.UserButton.Location = new System.Drawing.Point(45, 377);
+            this.UserButton.Location = new System.Drawing.Point(620, 394);
             this.UserButton.Name = "UserButton";
             this.UserButton.Size = new System.Drawing.Size(122, 23);
             this.UserButton.TabIndex = 5;
@@ -101,29 +94,60 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.VersionsTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(211, 363);
+            this.groupBox1.Location = new System.Drawing.Point(12, 388);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(385, 197);
+            this.groupBox1.Size = new System.Drawing.Size(305, 194);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Product Versions Loaded";
+            this.groupBox1.Text = "Assembly Versions Loaded";
             // 
             // VersionsTextBox
             // 
             this.VersionsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.VersionsTextBox.Location = new System.Drawing.Point(44, 31);
+            this.VersionsTextBox.Location = new System.Drawing.Point(31, 29);
             this.VersionsTextBox.Multiline = true;
             this.VersionsTextBox.Name = "VersionsTextBox";
             this.VersionsTextBox.ReadOnly = true;
-            this.VersionsTextBox.Size = new System.Drawing.Size(320, 147);
+            this.VersionsTextBox.Size = new System.Drawing.Size(255, 159);
             this.VersionsTextBox.TabIndex = 0;
+            // 
+            // InfoTextBox
+            // 
+            this.InfoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InfoTextBox.Location = new System.Drawing.Point(26, 29);
+            this.InfoTextBox.Multiline = true;
+            this.InfoTextBox.Name = "InfoTextBox";
+            this.InfoTextBox.ReadOnly = true;
+            this.InfoTextBox.Size = new System.Drawing.Size(243, 132);
+            this.InfoTextBox.TabIndex = 19;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.InfoTextBox);
+            this.groupBox2.Location = new System.Drawing.Point(327, 388);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(275, 194);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "System and Revit Settings";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ArcadisMain.Properties.Resources.Arcadis;
+            this.pictureBox1.Location = new System.Drawing.Point(264, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // About_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 585);
+            this.ClientSize = new System.Drawing.Size(754, 609);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.UserButton);
             this.Controls.Add(this.ReferenceButton);
@@ -136,9 +160,11 @@
             this.Name = "About_Form";
             this.Text = "About Arcadis Tools";
             this.Load += new System.EventHandler(this.About_Form_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +180,7 @@
         private System.Windows.Forms.Button UserButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox VersionsTextBox;
+        private System.Windows.Forms.TextBox InfoTextBox;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

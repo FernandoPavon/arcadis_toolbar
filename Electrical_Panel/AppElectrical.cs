@@ -26,10 +26,22 @@ namespace Electrical_Panel
                 string assemblyPath = exeAssembly.Location;
                 string arcadisTab = Utils.k_arcadisMainTab;
 
+                var geography = exeAssembly.GetCustomAttributes(typeof(AssemblyGeography), false)[0];
+                string geo = ((AssemblyGeography)geography).Value;
+
+                foreach(AssemblyVersion assembly in Utils.s_assemblies)
+                {
+                    if(assembly.AssemblyName == "Electrical_Panel.dll")
+                    {
+                        assembly.Geography = geo;
+                    }
+                }
+
                 //Get Assembly Versions
                 //Utils.g_DynamicTools_Version = exeAssembly.GetName().Version.ToString();
 
                 Metrics.AppendLog("\r\nLoading Electrical Panel");
+                Metrics.AppendLog("Geography: " + geo);
                 Metrics.AppendLog("Toolbar Tab: " + arcadisTab);
                 Metrics.AppendLog("Assembly Path: " + assemblyPath);
                 Metrics.AppendLog("Session Start: " + m_startTime.ToString());

@@ -32,7 +32,7 @@ namespace ArcadisMain
     {
         public string PanelName { get; set; }
         public RibbonPanel Panel { get; set; }
-
+        
         public ToolbarPanel(string name, RibbonPanel panel)
         {
             PanelName = name;

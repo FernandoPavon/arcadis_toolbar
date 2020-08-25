@@ -11,3 +11,4 @@ C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.GenerateResourc
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.CoreCompileInputs.cache
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.dll
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.pdb
+C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.Ribbon_Form.resources
