@@ -170,7 +170,7 @@ namespace ArcadisMain
                 strCommand = "ArcadisMain.Ribbon_Command";
                 bitmap = Properties.Resources.Ribbon;
                 bitmapHelp = Properties.Resources.MetricsHelp;
-                Utils.CreateCommand(panel, toolPanel, "Ribbon", "Ribbon", locPath, strCommand, bitmap, "Select Tools for Ribbon", bitmapHelp, longDesc, contextHelp);
+                Utils.CreateCommand(panel, toolPanel, "Ribbon Settings", "Ribbon Settings", locPath, strCommand, bitmap, "Select Tools for Ribbon", bitmapHelp, longDesc, contextHelp);
 
 
                 strCommand = "ArcadisMain.Metrics_Command";

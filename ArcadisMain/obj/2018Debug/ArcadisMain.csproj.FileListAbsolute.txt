@@ -12,3 +12,4 @@ C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csproj.CoreCompileInpu
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.dll
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.pdb
 C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.Ribbon_Form.resources
+C:\Arcadis_Toolbars\ArcadisMain\obj\2018Debug\ArcadisMain.csprojAssemblyReference.cache

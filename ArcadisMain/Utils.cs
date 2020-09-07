@@ -33,7 +33,7 @@ namespace ArcadisMain
         public const string k_cablePanel = "Cable Tools";
         public const string k_electricalPanel = "Electrical Tools";
 
-        public static string k_settings = "User Settings";
+        public static string k_settings = "General Settings";
 
         public static UIControlledApplication g_controlledUIApp = null;
         public static string g_mainAssemblyPath = null;
