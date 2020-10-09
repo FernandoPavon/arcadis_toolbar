@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ArcadisMain
 {
@@ -21,7 +22,9 @@ namespace ArcadisMain
         public static IList<AssemblyVersion> s_assemblies = new List<AssemblyVersion>();
 
         //Repository
-        public const string k_repository = "c:\\Arcadis_AddIn_Repository";
+        public static string k_repository = "c:\\Arcadis_AddIn_Repository";
+        public static string k_defaultToolsPath = @"C:\Users\pavonf\AppData\Roaming\Autodesk\Revit\Addins\2018\ArcadisToolbar";
+
         //Tab Names
         public const string k_arcadisMainTab = "Arcadis Main"; 
         public const string k_arcadisToolsTab = "Arcadis Tools";
@@ -32,6 +35,7 @@ namespace ArcadisMain
         public const string k_dynamicPanel = "Dynamic Tools";
         public const string k_cablePanel = "Cable Tools";
         public const string k_electricalPanel = "Electrical Tools";
+        public const string k_electricalPanel_UK = "Electrical Tools UK";
 
         public static string k_settings = "General Settings";
 
@@ -42,6 +46,8 @@ namespace ArcadisMain
         public static string k_systemCountry = "";
         public static string k_revitLanguage = "";
         public static string k_revitVersion = "";
+
+        public const string k_arcadisMain = "ArcadisMain.dll";
 
         //Addin modules
         //-------------
@@ -59,22 +65,18 @@ namespace ArcadisMain
 
         public static Assembly DynamicTools = null;
 
-        public static bool LoadAddin(string addin, bool loaded)
+        public static void LoadAddin(string addin)
         {
-            if (loaded) return true;
-
             string asspath = Path.GetDirectoryName(Utils.g_mainAssemblyPath);
-            string path = Path.Combine(asspath, addin);
+            string addinPath = Path.Combine(asspath, addin);
             try
             {
-                g_controlledUIApp.LoadAddIn(path);
+                g_controlledUIApp.LoadAddIn(addinPath);
             }
             catch
             {
-                Metrics.AppendLog("Error loading addin: " + addin);
+                Metrics.AppendLog("Error loading addin: " + addin + " could already be loaded.");
             }
-
-            return true;
         }
 
        
@@ -235,6 +237,24 @@ namespace ArcadisMain
                 }
             }
             return definition;
+        }
+
+        public static string CheckRepoModuleVersion(string repoPath, string assemblyName)
+        {
+            string repoVersion = string.Empty;
+            string arcadisRepository = Path.Combine(repoPath, k_revitVersion);
+            string modulePath = Path.Combine(arcadisRepository, assemblyName);
+
+            try
+            {
+                repoVersion = FileVersionInfo.GetVersionInfo(modulePath).ProductVersion;
+            }
+            catch 
+            {
+                repoVersion = "Module not found";
+            }
+
+            return repoVersion;
         }
 
         public static void CreateCommand(Autodesk.Revit.UI.RibbonPanel panel, ToolbarPanel toolPanel, string name, string title, string path, string com, Bitmap bitmap, string tooltip, Bitmap bitmapHelp, string longDesc, ContextualHelp contextHelp)

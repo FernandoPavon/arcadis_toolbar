@@ -60,7 +60,7 @@ namespace Electrical_Panel
                 //Electrical Panel
                 //-----------------------
                 RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_electricalPanel);
-                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);
+                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Electrical_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 
                 string strCommand = "Electrical_Panel.Fixtures_Command";

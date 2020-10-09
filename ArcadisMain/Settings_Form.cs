@@ -33,7 +33,7 @@ namespace ArcadisMain
                 DocPreferences docPreferences = new JavaScriptSerializer().Deserialize<DocPreferences>(json);
                 FamilyPathTextBox.Text = docPreferences.FamilyPath;
                 LogFilesTextBox.Text = docPreferences.LogPath;
-                RepoTextBox.Text = docPreferences.RepoPath;
+                
             }
         }
 
@@ -45,7 +45,7 @@ namespace ArcadisMain
             DocPreferences docPreferences = new DocPreferences();
             docPreferences.FamilyPath = FamilyPathTextBox.Text;
             docPreferences.LogPath = LogFilesTextBox.Text;
-            docPreferences.RepoPath = RepoTextBox.Text;
+            
 
             Parameter par = m_doc.ProjectInformation.LookupParameter("DocPreferences");
             string json = new JavaScriptSerializer().Serialize(docPreferences);
@@ -87,15 +87,7 @@ namespace ArcadisMain
 
         private void RepoBrowseButton_Click(object sender, EventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                DialogResult result = fbd.ShowDialog();
 
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    RepoTextBox.Text = fbd.SelectedPath;
-                }
-            }
         }
     }
 }

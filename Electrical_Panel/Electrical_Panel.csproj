@@ -154,8 +154,11 @@
     <PostBuildEvent>SET Repository=C:\Arcadis_AddIn_Repository
 
 if $(ConfigurationName) == 2018Debug (
-copy "$(ProjectDir)*.addin" "%25Repository%25\2018"
-copy "$(ProjectDir)bin\2018Debug\*.dll" "%25Repository%25\2018"
+rem copy "$(ProjectDir)*.addin" "%25Repository%25\2018"
+rem copy "$(ProjectDir)bin\2018Debug\*.dll" "%25Repository%25\2018"
+
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\Revit\Addins\2018\ArcadisToolbar"
+copy "$(ProjectDir)bin\2018Debug\*.dll" "$(AppData)\Autodesk\Revit\Addins\2018\ArcadisToolbar"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

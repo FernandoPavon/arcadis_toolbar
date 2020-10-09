@@ -40,7 +40,7 @@ namespace Export_Panel
                 //Export Panel
                 //-----------------------
                 RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_exportPanel);
-                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);
+                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Export_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 
                 string strCommand = "Export_Panel.ExportData_Command";

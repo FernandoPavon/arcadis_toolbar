@@ -28,64 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupSubs = new System.Windows.Forms.GroupBox();
-            this.BridgesCheckBox = new System.Windows.Forms.CheckBox();
-            this.StructuralCheckBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ToolbarTreeView = new System.Windows.Forms.TreeView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.DynCheckBox = new System.Windows.Forms.CheckBox();
-            this.ElectricalCheckBox = new System.Windows.Forms.CheckBox();
-            this.CableCheckBox = new System.Windows.Forms.CheckBox();
-            this.ExportDataCheckBox = new System.Windows.Forms.CheckBox();
-            this.ImportDataCheckBox = new System.Windows.Forms.CheckBox();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.groupSubs.SuspendLayout();
+            this.ToolsFolderTextBox = new System.Windows.Forms.TextBox();
+            this.ToolsBrowseButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ToolsListView = new System.Windows.Forms.ListView();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCurrentVersion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
+            this.RepoBrowseButton = new System.Windows.Forms.Button();
+            this.RepoTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.UpdateCheckBox = new System.Windows.Forms.CheckBox();
+            this.colRepoVersion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DefaultButton = new System.Windows.Forms.Button();
+            this.DefaultRepoPathButton = new System.Windows.Forms.Button();
+            this.LoadToolsButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.RevitVersionLabel = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupSubs
-            // 
-            this.groupSubs.Controls.Add(this.BridgesCheckBox);
-            this.groupSubs.Controls.Add(this.StructuralCheckBox);
-            this.groupSubs.Location = new System.Drawing.Point(323, 314);
-            this.groupSubs.Name = "groupSubs";
-            this.groupSubs.Size = new System.Drawing.Size(225, 106);
-            this.groupSubs.TabIndex = 21;
-            this.groupSubs.TabStop = false;
-            this.groupSubs.Text = "Asset Type Subscrptions";
-            // 
-            // BridgesCheckBox
-            // 
-            this.BridgesCheckBox.AutoSize = true;
-            this.BridgesCheckBox.Enabled = false;
-            this.BridgesCheckBox.Location = new System.Drawing.Point(28, 50);
-            this.BridgesCheckBox.Name = "BridgesCheckBox";
-            this.BridgesCheckBox.Size = new System.Drawing.Size(121, 17);
-            this.BridgesCheckBox.TabIndex = 4;
-            this.BridgesCheckBox.Text = "Bridge Design Tools";
-            this.BridgesCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // StructuralCheckBox
-            // 
-            this.StructuralCheckBox.AutoSize = true;
-            this.StructuralCheckBox.Enabled = false;
-            this.StructuralCheckBox.Location = new System.Drawing.Point(28, 27);
-            this.StructuralCheckBox.Name = "StructuralCheckBox";
-            this.StructuralCheckBox.Size = new System.Drawing.Size(100, 17);
-            this.StructuralCheckBox.TabIndex = 1;
-            this.StructuralCheckBox.Text = "Structural Tools";
-            this.StructuralCheckBox.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 19);
+            this.label3.Location = new System.Drawing.Point(580, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 20;
@@ -93,11 +66,12 @@
             // 
             // ToolbarTreeView
             // 
-            this.ToolbarTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ToolbarTreeView.Location = new System.Drawing.Point(15, 41);
+            this.ToolbarTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ToolbarTreeView.Location = new System.Drawing.Point(583, 43);
             this.ToolbarTreeView.Name = "ToolbarTreeView";
-            this.ToolbarTreeView.Size = new System.Drawing.Size(290, 436);
+            this.ToolbarTreeView.Size = new System.Drawing.Size(250, 440);
             this.ToolbarTreeView.TabIndex = 19;
             // 
             // groupBox4
@@ -105,7 +79,7 @@
             this.groupBox4.Controls.Add(this.radioButton9);
             this.groupBox4.Controls.Add(this.radioButton8);
             this.groupBox4.Controls.Add(this.radioButton7);
-            this.groupBox4.Location = new System.Drawing.Point(323, 41);
+            this.groupBox4.Location = new System.Drawing.Point(583, 549);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(225, 110);
             this.groupBox4.TabIndex = 18;
@@ -145,78 +119,9 @@
             this.radioButton7.Text = "Australia";
             this.radioButton7.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.DynCheckBox);
-            this.groupBox2.Controls.Add(this.ElectricalCheckBox);
-            this.groupBox2.Controls.Add(this.CableCheckBox);
-            this.groupBox2.Controls.Add(this.ExportDataCheckBox);
-            this.groupBox2.Controls.Add(this.ImportDataCheckBox);
-            this.groupBox2.Location = new System.Drawing.Point(323, 157);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(225, 151);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tools Available to Load";
-            // 
-            // DynCheckBox
-            // 
-            this.DynCheckBox.AutoSize = true;
-            this.DynCheckBox.Location = new System.Drawing.Point(28, 116);
-            this.DynCheckBox.Name = "DynCheckBox";
-            this.DynCheckBox.Size = new System.Drawing.Size(96, 17);
-            this.DynCheckBox.TabIndex = 6;
-            this.DynCheckBox.Text = "Dynamic Tools";
-            this.DynCheckBox.UseVisualStyleBackColor = true;
-            this.DynCheckBox.CheckedChanged += new System.EventHandler(this.DynCheckBox_CheckedChanged);
-            // 
-            // ElectricalCheckBox
-            // 
-            this.ElectricalCheckBox.AutoSize = true;
-            this.ElectricalCheckBox.Location = new System.Drawing.Point(28, 47);
-            this.ElectricalCheckBox.Name = "ElectricalCheckBox";
-            this.ElectricalCheckBox.Size = new System.Drawing.Size(98, 17);
-            this.ElectricalCheckBox.TabIndex = 2;
-            this.ElectricalCheckBox.Text = "Electrical Tools";
-            this.ElectricalCheckBox.UseVisualStyleBackColor = true;
-            this.ElectricalCheckBox.CheckedChanged += new System.EventHandler(this.ElectricalCheckBox_CheckedChanged);
-            // 
-            // CableCheckBox
-            // 
-            this.CableCheckBox.AutoSize = true;
-            this.CableCheckBox.Location = new System.Drawing.Point(28, 24);
-            this.CableCheckBox.Name = "CableCheckBox";
-            this.CableCheckBox.Size = new System.Drawing.Size(82, 17);
-            this.CableCheckBox.TabIndex = 3;
-            this.CableCheckBox.Text = "Cable Tools";
-            this.CableCheckBox.UseVisualStyleBackColor = true;
-            this.CableCheckBox.CheckedChanged += new System.EventHandler(this.CableCheckBox_CheckedChanged);
-            // 
-            // ExportDataCheckBox
-            // 
-            this.ExportDataCheckBox.AutoSize = true;
-            this.ExportDataCheckBox.Location = new System.Drawing.Point(28, 93);
-            this.ExportDataCheckBox.Name = "ExportDataCheckBox";
-            this.ExportDataCheckBox.Size = new System.Drawing.Size(82, 17);
-            this.ExportDataCheckBox.TabIndex = 3;
-            this.ExportDataCheckBox.Text = "Export Data";
-            this.ExportDataCheckBox.UseVisualStyleBackColor = true;
-            this.ExportDataCheckBox.CheckedChanged += new System.EventHandler(this.ExportDataCheckBox_CheckedChanged);
-            // 
-            // ImportDataCheckBox
-            // 
-            this.ImportDataCheckBox.AutoSize = true;
-            this.ImportDataCheckBox.Location = new System.Drawing.Point(28, 70);
-            this.ImportDataCheckBox.Name = "ImportDataCheckBox";
-            this.ImportDataCheckBox.Size = new System.Drawing.Size(81, 17);
-            this.ImportDataCheckBox.TabIndex = 4;
-            this.ImportDataCheckBox.Text = "Import Data";
-            this.ImportDataCheckBox.UseVisualStyleBackColor = true;
-            this.ImportDataCheckBox.CheckedChanged += new System.EventHandler(this.ImportDataCheckBox_CheckedChanged);
-            // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(406, 454);
+            this.CloseButton.Location = new System.Drawing.Point(667, 514);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 22;
@@ -224,48 +129,216 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // ToolsFolderTextBox
+            // 
+            this.ToolsFolderTextBox.Location = new System.Drawing.Point(104, 62);
+            this.ToolsFolderTextBox.Name = "ToolsFolderTextBox";
+            this.ToolsFolderTextBox.Size = new System.Drawing.Size(374, 20);
+            this.ToolsFolderTextBox.TabIndex = 25;
+            // 
+            // ToolsBrowseButton
+            // 
+            this.ToolsBrowseButton.Location = new System.Drawing.Point(23, 60);
+            this.ToolsBrowseButton.Name = "ToolsBrowseButton";
+            this.ToolsBrowseButton.Size = new System.Drawing.Size(75, 23);
+            this.ToolsBrowseButton.TabIndex = 24;
+            this.ToolsBrowseButton.Text = "Browse >>";
+            this.ToolsBrowseButton.UseVisualStyleBackColor = true;
+            this.ToolsBrowseButton.Click += new System.EventHandler(this.ToolsBrowseButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(99, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Tools Folder";
+            // 
+            // ToolsListView
+            // 
+            this.ToolsListView.BackColor = System.Drawing.SystemColors.Info;
+            this.ToolsListView.CheckBoxes = true;
+            this.ToolsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colCurrentVersion,
+            this.colRepoVersion});
+            this.ToolsListView.HideSelection = false;
+            this.ToolsListView.Location = new System.Drawing.Point(23, 193);
+            this.ToolsListView.Name = "ToolsListView";
+            this.ToolsListView.Size = new System.Drawing.Size(537, 290);
+            this.ToolsListView.TabIndex = 26;
+            this.ToolsListView.UseCompatibleStateImageBehavior = false;
+            this.ToolsListView.View = System.Windows.Forms.View.Details;
+            this.ToolsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.ToolsListView_ItemChecked);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 140;
+            // 
+            // colCurrentVersion
+            // 
+            this.colCurrentVersion.Text = "Current Version";
+            this.colCurrentVersion.Width = 120;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Select tools to load:";
+            // 
+            // RepoBrowseButton
+            // 
+            this.RepoBrowseButton.Location = new System.Drawing.Point(23, 110);
+            this.RepoBrowseButton.Name = "RepoBrowseButton";
+            this.RepoBrowseButton.Size = new System.Drawing.Size(75, 23);
+            this.RepoBrowseButton.TabIndex = 28;
+            this.RepoBrowseButton.Text = "Browse >>";
+            this.RepoBrowseButton.UseVisualStyleBackColor = true;
+            this.RepoBrowseButton.Click += new System.EventHandler(this.RepoBrowseButton_Click);
+            // 
+            // RepoTextBox
+            // 
+            this.RepoTextBox.Location = new System.Drawing.Point(104, 112);
+            this.RepoTextBox.Name = "RepoTextBox";
+            this.RepoTextBox.Size = new System.Drawing.Size(374, 20);
+            this.RepoTextBox.TabIndex = 29;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(104, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Repository";
+            // 
+            // UpdateCheckBox
+            // 
+            this.UpdateCheckBox.AutoSize = true;
+            this.UpdateCheckBox.Location = new System.Drawing.Point(154, 171);
+            this.UpdateCheckBox.Name = "UpdateCheckBox";
+            this.UpdateCheckBox.Size = new System.Drawing.Size(156, 17);
+            this.UpdateCheckBox.TabIndex = 31;
+            this.UpdateCheckBox.Text = "Update tools before loading";
+            this.UpdateCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // colRepoVersion
+            // 
+            this.colRepoVersion.Text = "Repository Version";
+            this.colRepoVersion.Width = 120;
+            // 
+            // DefaultButton
+            // 
+            this.DefaultButton.Location = new System.Drawing.Point(484, 59);
+            this.DefaultButton.Name = "DefaultButton";
+            this.DefaultButton.Size = new System.Drawing.Size(75, 23);
+            this.DefaultButton.TabIndex = 32;
+            this.DefaultButton.Text = "Default Path";
+            this.DefaultButton.UseVisualStyleBackColor = true;
+            this.DefaultButton.Click += new System.EventHandler(this.DefaultButton_Click);
+            // 
+            // DefaultRepoPathButton
+            // 
+            this.DefaultRepoPathButton.Location = new System.Drawing.Point(485, 109);
+            this.DefaultRepoPathButton.Name = "DefaultRepoPathButton";
+            this.DefaultRepoPathButton.Size = new System.Drawing.Size(75, 23);
+            this.DefaultRepoPathButton.TabIndex = 33;
+            this.DefaultRepoPathButton.Text = "Default Path";
+            this.DefaultRepoPathButton.UseVisualStyleBackColor = true;
+            this.DefaultRepoPathButton.Click += new System.EventHandler(this.DefaultRepoPathButton_Click);
+            // 
+            // LoadToolsButton
+            // 
+            this.LoadToolsButton.Location = new System.Drawing.Point(456, 514);
+            this.LoadToolsButton.Name = "LoadToolsButton";
+            this.LoadToolsButton.Size = new System.Drawing.Size(103, 23);
+            this.LoadToolsButton.TabIndex = 34;
+            this.LoadToolsButton.Text = "Load Tools";
+            this.LoadToolsButton.UseVisualStyleBackColor = true;
+            this.LoadToolsButton.Click += new System.EventHandler(this.LoadToolsButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(349, 514);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(102, 23);
+            this.DeleteButton.TabIndex = 35;
+            this.DeleteButton.Text = "Remove Tools";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // RevitVersionLabel
+            // 
+            this.RevitVersionLabel.AutoSize = true;
+            this.RevitVersionLabel.Location = new System.Drawing.Point(20, 9);
+            this.RevitVersionLabel.Name = "RevitVersionLabel";
+            this.RevitVersionLabel.Size = new System.Drawing.Size(73, 13);
+            this.RevitVersionLabel.TabIndex = 36;
+            this.RevitVersionLabel.Text = "Revit Version:";
+            // 
             // Ribbon_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 503);
+            this.ClientSize = new System.Drawing.Size(858, 549);
+            this.ControlBox = false;
+            this.Controls.Add(this.RevitVersionLabel);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.LoadToolsButton);
+            this.Controls.Add(this.DefaultRepoPathButton);
+            this.Controls.Add(this.DefaultButton);
+            this.Controls.Add(this.UpdateCheckBox);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.RepoTextBox);
+            this.Controls.Add(this.RepoBrowseButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ToolsListView);
+            this.Controls.Add(this.ToolsFolderTextBox);
+            this.Controls.Add(this.ToolsBrowseButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.groupSubs);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ToolbarTreeView);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
             this.Name = "Ribbon_Form";
             this.Text = "Ribbon Tools Manager";
             this.Load += new System.EventHandler(this.Ribbon_Form_Load);
-            this.groupSubs.ResumeLayout(false);
-            this.groupSubs.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupSubs;
-        private System.Windows.Forms.CheckBox BridgesCheckBox;
-        private System.Windows.Forms.CheckBox StructuralCheckBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TreeView ToolbarTreeView;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox DynCheckBox;
-        private System.Windows.Forms.CheckBox ElectricalCheckBox;
-        private System.Windows.Forms.CheckBox CableCheckBox;
-        private System.Windows.Forms.CheckBox ExportDataCheckBox;
-        private System.Windows.Forms.CheckBox ImportDataCheckBox;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.TextBox ToolsFolderTextBox;
+        private System.Windows.Forms.Button ToolsBrowseButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView ToolsListView;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colCurrentVersion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button RepoBrowseButton;
+        private System.Windows.Forms.TextBox RepoTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox UpdateCheckBox;
+        private System.Windows.Forms.ColumnHeader colRepoVersion;
+        private System.Windows.Forms.Button DefaultButton;
+        private System.Windows.Forms.Button DefaultRepoPathButton;
+        private System.Windows.Forms.Button LoadToolsButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Label RevitVersionLabel;
     }
 }

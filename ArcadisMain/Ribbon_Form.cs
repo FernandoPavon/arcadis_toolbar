@@ -7,11 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
+using System.Reflection;
+using Autodesk.Revit.UI;
 
 namespace ArcadisMain
 {
     public partial class Ribbon_Form : Form
     {
+        bool isLoading = true;
+        string m_arcadisMainPath = string.Empty;
+        private readonly IList<AssemblyVersion> m_assemblies = new List<AssemblyVersion>();
+
         public Ribbon_Form()
         {
             InitializeComponent();
@@ -22,11 +30,56 @@ namespace ArcadisMain
             TreeViewFromArcadisRibbon();
 
             MainUserPreferences up = MainUserPreferences.GetUserPreferences();
-            CableCheckBox.Checked = up.CableCheckBox;
-            DynCheckBox.Checked = up.DynamicCheckBox;
-            ElectricalCheckBox.Checked = up.ElectricalCheckBox;
-            ExportDataCheckBox.Checked = up.ExportDataCheckBox;
-            ImportDataCheckBox.Checked = up.ImportDataCheckBox;
+            m_arcadisMainPath = Path.GetDirectoryName(Utils.g_mainAssemblyPath);
+            
+            if(up.ToolsPath == string.Empty)
+            {
+                up.ToolsPath = m_arcadisMainPath;
+            }
+
+            ToolsFolderTextBox.Text = up.ToolsPath;
+            RepoTextBox.Text = Utils.k_repository;
+            RevitVersionLabel.Text = Utils.k_revitVersion;
+
+            string[] files = Directory.GetFiles(m_arcadisMainPath);
+            string[] items = new string[3];
+
+            foreach (string assemblyPath in files)
+            {
+                string ext = Path.GetExtension(assemblyPath);
+
+                if (ext != ".dll") continue;
+
+                string assemblyName = Path.GetFileName(assemblyPath);
+                if (assemblyName.Equals(Utils.k_arcadisMain)) continue;
+
+                AssemblyVersion module = new AssemblyVersion();
+                module.AssemblyName = assemblyName;
+                module.CurrentVersion = FileVersionInfo.GetVersionInfo(assemblyPath).ProductVersion;
+
+                //var geography = reflectedAssembly.GetCustomAttributes(typeof(AssemblyGeography), false)[0];
+                //string geo = ((AssemblyGeography)geography).Value;
+
+                m_assemblies.Add(module);
+
+                items[0] = module.AssemblyName;
+                items[1] = module.CurrentVersion;
+                items[2] = Utils.CheckRepoModuleVersion(RepoTextBox.Text, module.AssemblyName);
+
+                ListViewItem viewItem = new ListViewItem(items);
+
+                foreach(string mod in up.ToolModules)
+                {
+                    if(mod == module.AssemblyName)
+                    {
+                        viewItem.Checked = true;
+                    }
+                }
+                
+                ToolsListView.Items.Add(viewItem);
+            }
+
+            isLoading = false;
         }
 
         private void TreeViewFromArcadisRibbon()
@@ -65,6 +118,8 @@ namespace ArcadisMain
 
             foreach (ToolbarTab tab in Utils.s_arcadisRibbon.Tabs)
             {
+                if (tab.Panels.Count < 1) continue;
+
                 TreeNode nodeTab = ToolbarTreeView.Nodes.Add(tab.TabName, tab.TabName);
                 nodeTab.ImageIndex = 0;
                 nodeTab.SelectedImageIndex = 0;
@@ -101,7 +156,7 @@ namespace ArcadisMain
                     {
                         TreeNode nodeCommand = nodePanel.Nodes.Add(com.CommandName, com.CommandName);
                         nodeCommand.Checked = com.Command.Visible;
-
+                        
                         nodeCommand.ImageIndex = index;
                         nodeCommand.SelectedImageIndex = index;
                         nodeCommand.NodeFont = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);
@@ -115,167 +170,102 @@ namespace ArcadisMain
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            //Save User Preferences
-            //---------------------
+            IList<string> modules = new List<string>();
+
+            foreach(ListViewItem item in ToolsListView.CheckedItems)
+            {
+                modules.Add(item.Text);
+            }
+
             MainUserPreferences up = new MainUserPreferences();
-            up.CableCheckBox = CableCheckBox.Checked;
-            up.DynamicCheckBox = DynCheckBox.Checked;
-            up.ElectricalCheckBox = ElectricalCheckBox.Checked;
-            up.ExportDataCheckBox = ExportDataCheckBox.Checked;
-            up.ImportDataCheckBox = ImportDataCheckBox.Checked;
+
+            up.ToolsPath = ToolsFolderTextBox.Text;
+            up.ToolModules = modules;
 
             MainUserPreferences.SaveUserPreferences(up);
 
             Close();
         }
 
-        private void ElectricalCheckBox_CheckedChanged(object sender, EventArgs e)
+       
+
+        private void ToolsListView_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (ElectricalCheckBox.Checked)
+            if (isLoading) return;
+
+            string moduleName = e.Item.Text;
+            string module = Path.GetFileNameWithoutExtension(moduleName);
+
+            if (e.Item.Checked)
             {
-                if (Utils.b_electricalTools != true)
-                {
-                    try
-                    {
-                        Utils.b_electricalTools = Utils.LoadAddin(Utils.k_electricalAddin, Utils.b_electricalTools);
-                    }
-                    catch (Exception ex)
-                    {
-                        Metrics.AppendLog("Exception in loading Electrical Addin:\r\n" + ex.Message);
-                    }
-                }
-                else
-                {
-                    UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_electricalPanel, true);
-                }
+                string moduleAddIn = module + ".addin";
+
+                Utils.LoadAddin(moduleAddIn);
+                TreePanelVisible(moduleName, true);
             }
             else
             {
-                UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_electricalPanel, false);
+                TreePanelVisible(moduleName, false);
             }
 
             TreeViewFromArcadisRibbon();
         }
 
-        private void CableCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CableCheckBox.Checked)
-            {
-                if (Utils.b_cableTools != true)
-                {
-                    try
-                    {
-                        Utils.b_cableTools = Utils.LoadAddin(Utils.k_cableAddin, Utils.b_cableTools);
-                    }
-                    catch (Exception ex)
-                    {
-                        Metrics.AppendLog("Exception in loading Cable Addin:\r\n" + ex.Message);
-                    }
-                }
-                else
-                {
-                    UnLoadPanelFromTree(Utils.k_arcadisToolsTab, Utils.k_cablePanel, true);
-                }
-            }
-            else
-            {
-                UnLoadPanelFromTree(Utils.k_arcadisToolsTab, Utils.k_cablePanel, false);
-            }
-
-            TreeViewFromArcadisRibbon();
-        }
-
-        private void ExportDataCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ExportDataCheckBox.Checked)
-            {
-                if (Utils.b_exportTools != true)
-                {
-                    try
-                    {
-                        Utils.b_exportTools = Utils.LoadAddin(Utils.k_exportAddin, Utils.b_exportTools);
-                    }
-                    catch (Exception ex)
-                    {
-                        Metrics.AppendLog("Exception in loading Export Addin:\r\n" + ex.Message);
-                    }
-                }
-                else
-                {
-                    UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_exportPanel, true);
-                }
-            }
-            else
-            {
-                UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_exportPanel, false);
-            }
-
-            TreeViewFromArcadisRibbon();
-        }
-
-        private void ImportDataCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ImportDataCheckBox.Checked)
-            {
-                if (Utils.b_importTools != true)
-                {
-                    try
-                    {
-                        Utils.b_importTools = Utils.LoadAddin(Utils.k_importAddin, Utils.b_importTools);
-                    }
-                    catch (Exception ex)
-                    {
-                        Metrics.AppendLog("Exception in loading Import Addin:\r\n" + ex.Message);
-                    }
-                }
-                else
-                {
-                    UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_importPanel, true);
-                }
-            }
-            else
-            {
-                UnLoadPanelFromTree(Utils.k_arcadisMainTab, Utils.k_importPanel, false);
-            }
-
-            TreeViewFromArcadisRibbon();
-        }
-
-        private void UnLoadPanelFromTree(string strTab, string strPanel, bool loaded)
+        private void TreePanelVisible(string module, bool visible)
         {
             foreach (ToolbarTab tab in Utils.s_arcadisRibbon.Tabs)
             {
-                if (tab.TabName == strTab)
+                foreach (ToolbarPanel panel in tab.Panels)
                 {
-                    if (strTab != Utils.k_arcadisMainTab) tab.RibbonTab.IsVisible = loaded;
-
-                    foreach (ToolbarPanel panel in tab.Panels)
-                    {
-                        if (panel.PanelName == strPanel) panel.Panel.Visible = loaded;
-                    }
+                    if (panel.AssemblyName == module) panel.Panel.Visible = visible;
                 }
             }
         }
 
-        private void DynCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void RepoBrowseButton_Click(object sender, EventArgs e)
         {
-            if (DynCheckBox.Checked)
+            using (var fbd = new FolderBrowserDialog())
             {
-                try
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    if (Utils.b_dynamicTools == true) return;
-                    Utils.b_dynamicTools = Utils.LoadAddin(Utils.k_dynamicAddin, Utils.b_dynamicTools);
-                    TreeViewFromArcadisRibbon();
-                }
-                catch (Exception ex)
-                {
-                    Metrics.AppendLog("Exception in loading Dynamic Addin:\r\n" + ex.Message);
+                    RepoTextBox.Text = fbd.SelectedPath;
                 }
             }
-            else
+        }
+
+        private void ToolsBrowseButton_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
             {
-                //Unload tools
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    ToolsFolderTextBox.Text = fbd.SelectedPath;
+                }
             }
+        }
+
+        private void DefaultButton_Click(object sender, EventArgs e)
+        {
+            ToolsFolderTextBox.Text = Utils.k_defaultToolsPath;
+        }
+
+        private void DefaultRepoPathButton_Click(object sender, EventArgs e)
+        {
+            ToolsFolderTextBox.Text = Utils.k_repository;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            TaskDialog.Show("Feature", "Not implemented yet");
+        }
+
+        private void LoadToolsButton_Click(object sender, EventArgs e)
+        {
+            TaskDialog.Show("Feature", "Not implemented yet");
         }
     }
 }

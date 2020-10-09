@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  
+  <AddIn Type="Application">
+    <Name>Arcadis Electrical Tools UK</Name>
+    <Assembly>Electrical_Panel_UK.dll</Assembly>
+    <FullClassName>Electrical_Panel_UK.AppElectricalUK</FullClassName>
+    <ClientId>59049AA5-070B-4D16-B77E-F22268380674</ClientId>
+    <VendorId>Autodesk</VendorId>
+    <VendorDescription>EMEA Consulting</VendorDescription>
+  </AddIn>
+
+</RevitAddIns>

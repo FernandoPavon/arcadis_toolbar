@@ -1,0 +1,13 @@
+C:\Arcadis_Toolbars\Electrical_Panel_UK\bin\2018Debug\Electrical_Panel_UK.dll
+C:\Arcadis_Toolbars\Electrical_Panel_UK\bin\2018Debug\Electrical_Panel_UK.pdb
+C:\Arcadis_Toolbars\Electrical_Panel_UK\bin\2018Debug\ArcadisMain.dll
+C:\Arcadis_Toolbars\Electrical_Panel_UK\bin\2018Debug\ArcadisMain.pdb
+C:\Arcadis_Toolbars\Electrical_Panel_UK\bin\2018Debug\ArcadisMain.dll.config
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.csprojAssemblyReference.cache
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.g.resources
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.Properties.Resources.resources
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.csproj.GenerateResource.cache
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.csproj.CoreCompileInputs.cache
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.csproj.CopyComplete
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.dll
+C:\Arcadis_Toolbars\Electrical_Panel_UK\obj\2018Debug\Electrical_Panel_UK.pdb

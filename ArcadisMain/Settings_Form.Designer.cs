@@ -35,14 +35,14 @@
             this.LogFilesTextBox = new System.Windows.Forms.TextBox();
             this.BrowseLogButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.RepoBrowseButton = new System.Windows.Forms.Button();
             this.RepoTextBox = new System.Windows.Forms.TextBox();
+            this.RepoBrowseButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BrowseFamilyButton
             // 
-            this.BrowseFamilyButton.Location = new System.Drawing.Point(19, 107);
+            this.BrowseFamilyButton.Location = new System.Drawing.Point(19, 39);
             this.BrowseFamilyButton.Name = "BrowseFamilyButton";
             this.BrowseFamilyButton.Size = new System.Drawing.Size(75, 23);
             this.BrowseFamilyButton.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // FamilyPathTextBox
             // 
-            this.FamilyPathTextBox.Location = new System.Drawing.Point(101, 108);
+            this.FamilyPathTextBox.Location = new System.Drawing.Point(101, 40);
             this.FamilyPathTextBox.Name = "FamilyPathTextBox";
             this.FamilyPathTextBox.Size = new System.Drawing.Size(455, 20);
             this.FamilyPathTextBox.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 88);
+            this.label1.Location = new System.Drawing.Point(98, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 148);
+            this.label2.Location = new System.Drawing.Point(98, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 10;
@@ -77,14 +77,14 @@
             // 
             // LogFilesTextBox
             // 
-            this.LogFilesTextBox.Location = new System.Drawing.Point(101, 168);
+            this.LogFilesTextBox.Location = new System.Drawing.Point(101, 100);
             this.LogFilesTextBox.Name = "LogFilesTextBox";
             this.LogFilesTextBox.Size = new System.Drawing.Size(455, 20);
             this.LogFilesTextBox.TabIndex = 9;
             // 
             // BrowseLogButton
             // 
-            this.BrowseLogButton.Location = new System.Drawing.Point(19, 167);
+            this.BrowseLogButton.Location = new System.Drawing.Point(19, 99);
             this.BrowseLogButton.Name = "BrowseLogButton";
             this.BrowseLogButton.Size = new System.Drawing.Size(75, 23);
             this.BrowseLogButton.TabIndex = 8;
@@ -94,7 +94,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(250, 223);
+            this.CloseButton.Location = new System.Drawing.Point(250, 231);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 12;
@@ -102,37 +102,36 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // label3
+            // RepoTextBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Tools Repository";
+            this.RepoTextBox.Location = new System.Drawing.Point(101, 156);
+            this.RepoTextBox.Name = "RepoTextBox";
+            this.RepoTextBox.Size = new System.Drawing.Size(455, 20);
+            this.RepoTextBox.TabIndex = 28;
             // 
             // RepoBrowseButton
             // 
-            this.RepoBrowseButton.Location = new System.Drawing.Point(19, 45);
+            this.RepoBrowseButton.Location = new System.Drawing.Point(20, 154);
             this.RepoBrowseButton.Name = "RepoBrowseButton";
-            this.RepoBrowseButton.Size = new System.Drawing.Size(75, 23);
-            this.RepoBrowseButton.TabIndex = 14;
+            this.RepoBrowseButton.Size = new System.Drawing.Size(66, 23);
+            this.RepoBrowseButton.TabIndex = 27;
             this.RepoBrowseButton.Text = "Browse >>";
             this.RepoBrowseButton.UseVisualStyleBackColor = true;
-            this.RepoBrowseButton.Click += new System.EventHandler(this.RepoBrowseButton_Click);
             // 
-            // RepoTextBox
+            // label3
             // 
-            this.RepoTextBox.Location = new System.Drawing.Point(101, 45);
-            this.RepoTextBox.Name = "RepoTextBox";
-            this.RepoTextBox.Size = new System.Drawing.Size(455, 20);
-            this.RepoTextBox.TabIndex = 15;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(98, 140);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Tools Repository";
             // 
             // Settings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 277);
+            this.ClientSize = new System.Drawing.Size(568, 266);
             this.ControlBox = false;
             this.Controls.Add(this.RepoTextBox);
             this.Controls.Add(this.RepoBrowseButton);
@@ -162,8 +161,8 @@
         private System.Windows.Forms.TextBox LogFilesTextBox;
         private System.Windows.Forms.Button BrowseLogButton;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button RepoBrowseButton;
         private System.Windows.Forms.TextBox RepoTextBox;
+        private System.Windows.Forms.Button RepoBrowseButton;
+        private System.Windows.Forms.Label label3;
     }
 }

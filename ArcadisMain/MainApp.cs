@@ -94,19 +94,8 @@ namespace ArcadisMain
 
                 Metrics.AppendLog("Repository : " + arcadisRepository);
 
-                //Look for new Versions
-                //---------------------
-                IList<string> modules = new List<string>
-                {
-                    "ArcadisMain.dll",
-                    "Electrical_Panel.dll",
-                    "DynamicTools.dll",
-                    "Import_Panel.dll",
-                    "Export_Panel.dll",
-                    "Cable_Panel.dll"
-                };
-
-                //string[] files = Directory.GetFiles(arcadisRepository);
+                MainUserPreferences up = MainUserPreferences.GetUserPreferences();
+                IList<string> modules = up.ToolModules;
 
                 foreach (string assemblyName in modules)
                 {
@@ -138,7 +127,7 @@ namespace ArcadisMain
                     form.ShowDialog();
                 }
 
-                //Create Arcatis Tabs
+                //Create Arcadis Tabs
                 //-------------------
                 application.CreateRibbonTab(Utils.k_arcadisMainTab);
                 ToolbarTab mainTab = AddTabs(Utils.k_arcadisMainTab, true);
@@ -149,7 +138,7 @@ namespace ArcadisMain
                 // About Arcadis Tools Panel
                 //--------------------------
                 RibbonPanel panel = application.CreateRibbonPanel(Utils.k_arcadisMainTab, Utils.k_arcadisPanel);
-                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);
+                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "ArcadisMain.dll");
                 mainTab.Panels.Add(toolPanel);
 
                 string strCommand = "ArcadisMain.About_Command";
@@ -178,13 +167,10 @@ namespace ArcadisMain
                 bitmapHelp = Properties.Resources.MetricsHelp;
                 Utils.CreateCommand(panel, toolPanel, "Metrics Tracker", "Metrics Tracker", locPath, strCommand, bitmap, "Display session Metrics Tracker Log", bitmapHelp, longDesc, contextHelp);
 
-                MainUserPreferences up = MainUserPreferences.GetUserPreferences();
-
-                if(up.CableCheckBox == true) Utils.b_cableTools = Utils.LoadAddin(Utils.k_cableAddin, Utils.b_cableTools);
-                if(up.DynamicCheckBox == true) Utils.b_dynamicTools = Utils.LoadAddin(Utils.k_dynamicAddin, Utils.b_dynamicTools);
-                if(up.ElectricalCheckBox == true) Utils.b_electricalTools = Utils.LoadAddin(Utils.k_electricalAddin, Utils.b_electricalTools);
-                if(up.ExportDataCheckBox == true) Utils.b_exportTools = Utils.LoadAddin(Utils.k_exportAddin, Utils.b_exportTools);
-                if(up.ImportDataCheckBox == true) Utils.b_importTools = Utils.LoadAddin(Utils.k_importAddin, Utils.b_importTools);
+                foreach(string module in up.ToolModules)
+                {
+                    Utils.LoadAddin(module);
+                }
 
             }
             catch (Exception ex)

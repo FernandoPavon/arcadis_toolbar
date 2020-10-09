@@ -40,7 +40,7 @@ namespace Import_Panel
                 //Export Panel
                 //-----------------------
                 RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_importPanel);
-                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);
+                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Import_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 
                 string strCommand = "Import_Panel.ImportData_Command";

@@ -18,23 +18,14 @@ namespace ArcadisMain
 
         private void SetDefaults()
         {
-            //Settings_Form
-            //-------------
-            ExportDataCheckBox = false;
-            ImportDataCheckBox = false;
-            ElectricalCheckBox = false;
-            DynamicCheckBox = false;
-            CableCheckBox = false;
+            ToolsPath = string.Empty;
+            ToolModules = new List<string>();
         }
 
-        //Settings_Form
-        //-------------
-        public bool ExportDataCheckBox { get; set; }
-        public bool ImportDataCheckBox { get; set; }
-        public bool ElectricalCheckBox { get; set; }
-        public bool DynamicCheckBox { get; set; }
-        public bool CableCheckBox { get; set; }
-       
+        public string ToolsPath { get; set; }
+
+        public IList<string> ToolModules { get; set; }
+
         // Get and save User Preferences
         public static MainUserPreferences GetUserPreferences()
         {

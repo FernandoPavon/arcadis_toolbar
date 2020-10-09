@@ -60,7 +60,7 @@ namespace Cable_Panel
                 //Cable Panel
                 //-----------------------
                 RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_cablePanel);
-                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel);
+                ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Cable_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 
                 string strCommand = "Cable_Panel.Trefoils_Command";

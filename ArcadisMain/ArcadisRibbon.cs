@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Autodesk.Revit.UI;
 using System.Drawing;
+using System.Reflection;
 
 namespace ArcadisMain
 {
@@ -32,11 +33,13 @@ namespace ArcadisMain
     {
         public string PanelName { get; set; }
         public RibbonPanel Panel { get; set; }
+        public string AssemblyName { get; set; }
         
-        public ToolbarPanel(string name, RibbonPanel panel)
+        public ToolbarPanel(string name, RibbonPanel panel, string assemblyName)
         {
             PanelName = name;
             Panel = panel;
+            AssemblyName = assemblyName;
         }
 
         public IList<ToolbarCommand> Commands { get; } = new List<ToolbarCommand>();
