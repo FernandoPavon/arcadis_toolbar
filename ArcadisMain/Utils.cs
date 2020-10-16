@@ -56,26 +56,27 @@ namespace ArcadisMain
         public const string k_electricalAddin = "Electrical_Panel.addin";
         public const string k_exportAddin = "Export_Panel.addin";
         public const string k_importAddin = "Import_Panel.addin";
+
         //Addin loanded or not
-        public static bool b_cableTools = false;
-        public static bool b_electricalTools = false;
-        public static bool b_exportTools = false;
-        public static bool b_importTools = false;
-        public static bool b_dynamicTools = false;
+        //public static bool b_cableTools = false;
+        //public static bool b_electricalTools = false;
+        //public static bool b_exportTools = false;
+        //public static bool b_importTools = false;
+        //public static bool b_dynamicTools = false;
 
         public static Assembly DynamicTools = null;
 
-        public static void LoadAddin(string addin)
+        public static void LoadAddin(string addinPath)
         {
-            string asspath = Path.GetDirectoryName(Utils.g_mainAssemblyPath);
-            string addinPath = Path.Combine(asspath, addin);
+            //string asspath = Path.GetDirectoryName(path);
+            //string addinPath = Path.Combine(asspath, addin);
             try
             {
                 g_controlledUIApp.LoadAddIn(addinPath);
             }
-            catch
+            catch (Exception ex)
             {
-                Metrics.AppendLog("Error loading addin: " + addin + " could already be loaded.");
+                Metrics.AppendLog("Error loading addin: " + addinPath + " could already be loaded.");
             }
         }
 

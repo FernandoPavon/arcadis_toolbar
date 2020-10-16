@@ -16,7 +16,7 @@ namespace Electrical_Panel_UK
 
         public Result OnStartup(UIControlledApplication application)
         {
-            if (Utils.b_electricalTools) return Result.Succeeded;
+            //if (Utils.b_electricalTools) return Result.Succeeded;
 
             try
             {
@@ -57,9 +57,20 @@ namespace Electrical_Panel_UK
                     }
                 }
 
-                //Electrical Panel
+                //Electrical Panel UK
                 //-----------------------
-                RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_electricalPanel_UK);
+                RibbonPanel panel;
+                try
+                {
+                    panel = application.CreateRibbonPanel(arcadisTab, Utils.k_electricalPanel_UK);
+                }
+                catch
+                {
+                    return Result.Cancelled;
+                }
+
+                if (null == panel) return Result.Failed;
+
                 ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Electrical_Panel_UK.dll");
                 toolTab.Panels.Add(toolPanel);
 

@@ -16,7 +16,7 @@ namespace Cable_Panel
 
         public Result OnStartup(UIControlledApplication application)
         {
-            if (Utils.b_cableTools) return Result.Succeeded;
+            //if (Utils.b_cableTools) return Result.Succeeded;
 
             try
             {
@@ -59,7 +59,18 @@ namespace Cable_Panel
 
                 //Cable Panel
                 //-----------------------
-                RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_cablePanel);
+                RibbonPanel panel;
+                try
+                {
+                    panel = application.CreateRibbonPanel(arcadisTab, Utils.k_cablePanel);
+                }
+                catch
+                {
+                    return Result.Cancelled;
+                }
+
+                if (null == panel) return Result.Failed;
+                
                 ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Cable_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 

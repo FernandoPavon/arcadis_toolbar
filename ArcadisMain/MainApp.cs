@@ -101,9 +101,27 @@ namespace ArcadisMain
                 {
                     string repoPath = Path.Combine(arcadisRepository, assemblyName);
                     string revitPath = Path.Combine(m_revitAddinPath, assemblyName);
+                    string revitVersion = string.Empty;
+                    string repoVersion = string.Empty;
 
-                    string revitVersion = FileVersionInfo.GetVersionInfo(revitPath).ProductVersion;
-                    string repoVersion = FileVersionInfo.GetVersionInfo(repoPath).ProductVersion;
+                    try
+                    {
+                        revitVersion = FileVersionInfo.GetVersionInfo(revitPath).ProductVersion;
+                    }
+                    catch
+                    {
+                        revitVersion = "Not Found";
+                    }
+
+                    try
+                    {
+                        repoVersion = FileVersionInfo.GetVersionInfo(repoPath).ProductVersion;
+                    }
+                    catch
+                    {
+                        repoVersion = "Not Found";
+                    }
+                    
 
                     AssemblyVersion module = new AssemblyVersion();
                     module.AssemblyName = assemblyName;
@@ -169,9 +187,21 @@ namespace ArcadisMain
 
                 foreach(string module in up.ToolModules)
                 {
-                    Utils.LoadAddin(module);
-                }
+                    //string addinPath = Path.Combine(Utils.g_mainAssemblyPath, module);
 
+                    //addinPath = m_revitAddinPath;
+                    string addinFile = Path.GetFileNameWithoutExtension(module) + ".addin";
+                    string addinPath = Path.Combine(m_revitAddinPath, addinFile);
+
+                    try
+                    {
+                        Utils.LoadAddin(addinPath);
+                    }
+                    catch (Exception ex)
+                    { 
+                        TaskDialog.Show("Exception MainApp L202", ex.Message);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -196,7 +226,6 @@ namespace ArcadisMain
                     break;
                 }
             }
-
             return toolTab;
         }
 

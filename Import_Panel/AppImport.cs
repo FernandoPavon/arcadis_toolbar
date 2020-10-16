@@ -12,7 +12,7 @@ namespace Import_Panel
 
         public Result OnStartup(UIControlledApplication application)
         {
-            if (Utils.b_importTools) return Result.Succeeded;
+            //if (Utils.b_importTools) return Result.Succeeded;
 
             try
             {
@@ -39,7 +39,18 @@ namespace Import_Panel
 
                 //Export Panel
                 //-----------------------
-                RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_importPanel);
+                RibbonPanel panel;
+                try
+                {
+                    panel = application.CreateRibbonPanel(arcadisTab, Utils.k_importPanel);
+                }
+                catch
+                {
+                    return Result.Cancelled;
+                }
+
+                if (null == panel) return Result.Failed;
+                
                 ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Import_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 

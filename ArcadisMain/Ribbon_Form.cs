@@ -18,7 +18,10 @@ namespace ArcadisMain
     {
         bool isLoading = true;
         string m_arcadisMainPath = string.Empty;
+        string m_modulePath = string.Empty;
+        string m_repoPath = string.Empty;
         private readonly IList<AssemblyVersion> m_assemblies = new List<AssemblyVersion>();
+        MainUserPreferences m_up;
 
         public Ribbon_Form()
         {
@@ -29,19 +32,35 @@ namespace ArcadisMain
         {
             TreeViewFromArcadisRibbon();
 
-            MainUserPreferences up = MainUserPreferences.GetUserPreferences();
+            m_up = MainUserPreferences.GetUserPreferences();
             m_arcadisMainPath = Path.GetDirectoryName(Utils.g_mainAssemblyPath);
-            
-            if(up.ToolsPath == string.Empty)
+            m_repoPath = Utils.k_repository;
+
+
+            if (m_up.ToolsPath == string.Empty)
             {
-                up.ToolsPath = m_arcadisMainPath;
+                m_up.ToolsPath = m_arcadisMainPath;
             }
+            
+          
+            m_modulePath = m_arcadisMainPath;
 
-            ToolsFolderTextBox.Text = up.ToolsPath;
-            RepoTextBox.Text = Utils.k_repository;
-            RevitVersionLabel.Text = Utils.k_revitVersion;
+            ToolsFolderTextBox.Text = m_modulePath;
+            RepoTextBox.Text = m_repoPath;
+            RevitVersionLabel.Text = "Revit Version: " +  Utils.k_revitVersion;
 
-            string[] files = Directory.GetFiles(m_arcadisMainPath);
+            GetModules(m_modulePath, m_up);
+           
+            isLoading = false;
+        }
+
+        private void GetModules(string path, MainUserPreferences up)
+        {
+            ToolsListView.Items.Clear();
+
+            if (path.Length < 1) return;
+
+            string[] files = Directory.GetFiles(path);
             string[] items = new string[3];
 
             foreach (string assemblyPath in files)
@@ -57,29 +76,16 @@ namespace ArcadisMain
                 module.AssemblyName = assemblyName;
                 module.CurrentVersion = FileVersionInfo.GetVersionInfo(assemblyPath).ProductVersion;
 
-                //var geography = reflectedAssembly.GetCustomAttributes(typeof(AssemblyGeography), false)[0];
-                //string geo = ((AssemblyGeography)geography).Value;
-
                 m_assemblies.Add(module);
 
                 items[0] = module.AssemblyName;
                 items[1] = module.CurrentVersion;
-                items[2] = Utils.CheckRepoModuleVersion(RepoTextBox.Text, module.AssemblyName);
+                items[2] = Utils.CheckRepoModuleVersion(m_repoPath, module.AssemblyName);
 
                 ListViewItem viewItem = new ListViewItem(items);
-
-                foreach(string mod in up.ToolModules)
-                {
-                    if(mod == module.AssemblyName)
-                    {
-                        viewItem.Checked = true;
-                    }
-                }
                 
                 ToolsListView.Items.Add(viewItem);
             }
-
-            isLoading = false;
         }
 
         private void TreeViewFromArcadisRibbon()
@@ -168,47 +174,9 @@ namespace ArcadisMain
             ToolbarTreeView.ExpandAll();
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            IList<string> modules = new List<string>();
-
-            foreach(ListViewItem item in ToolsListView.CheckedItems)
-            {
-                modules.Add(item.Text);
-            }
-
-            MainUserPreferences up = new MainUserPreferences();
-
-            up.ToolsPath = ToolsFolderTextBox.Text;
-            up.ToolModules = modules;
-
-            MainUserPreferences.SaveUserPreferences(up);
-
-            Close();
-        }
-
-       
-
         private void ToolsListView_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (isLoading) return;
-
-            string moduleName = e.Item.Text;
-            string module = Path.GetFileNameWithoutExtension(moduleName);
-
-            if (e.Item.Checked)
-            {
-                string moduleAddIn = module + ".addin";
-
-                Utils.LoadAddin(moduleAddIn);
-                TreePanelVisible(moduleName, true);
-            }
-            else
-            {
-                TreePanelVisible(moduleName, false);
-            }
-
-            TreeViewFromArcadisRibbon();
+           
         }
 
         private void TreePanelVisible(string module, bool visible)
@@ -230,8 +198,10 @@ namespace ArcadisMain
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    RepoTextBox.Text = fbd.SelectedPath;
+                    m_repoPath = fbd.SelectedPath;
+                    RepoTextBox.Text = m_repoPath;
                 }
+                GetModules(m_modulePath, m_up);
             }
         }
 
@@ -243,29 +213,177 @@ namespace ArcadisMain
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    ToolsFolderTextBox.Text = fbd.SelectedPath;
+                    m_modulePath = fbd.SelectedPath;
+                    ToolsFolderTextBox.Text = m_modulePath;
                 }
+                GetModules(m_modulePath, m_up);
             }
+
+            LoadToolsButton.Enabled = false;
+            UnloadToolsButton.Enabled = false;
         }
 
         private void DefaultButton_Click(object sender, EventArgs e)
         {
             ToolsFolderTextBox.Text = Utils.k_defaultToolsPath;
+            GetModules(Utils.k_defaultToolsPath, m_up);
+
+            LoadToolsButton.Enabled = true;
+            UnloadToolsButton.Enabled = true;
         }
 
         private void DefaultRepoPathButton_Click(object sender, EventArgs e)
         {
-            ToolsFolderTextBox.Text = Utils.k_repository;
+            RepoTextBox.Text = Utils.k_repository;
+            GetModules(m_modulePath, m_up);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            TaskDialog.Show("Feature", "Not implemented yet");
+            ListView.CheckedListViewItemCollection checkedItems = ToolsListView.CheckedItems;
+
+            if (checkedItems.Count < 1) return;
+
+            TaskDialogResult result = TaskDialog.Show("Warning", "Are you sure you want to delete the selected tools?", TaskDialogCommonButtons.No | TaskDialogCommonButtons.Yes, TaskDialogResult.No);
+
+            if(TaskDialogResult.No == result)
+            {
+                return;
+            }
+            else
+            {
+                foreach (ListViewItem item in checkedItems)
+                {
+                    string moduleName = item.Text;
+                   
+                    TreePanelVisible(moduleName, false);
+                    string dllModule = Path.Combine(m_modulePath, moduleName);
+
+                    try
+                    {
+                        File.Delete(dllModule);
+                    }
+                    catch
+                    {
+                        TaskDialog.Show("Information", "Could not delete file: " + dllModule);
+                    }
+
+                    string addinModule = Path.GetFileNameWithoutExtension(dllModule);
+                    addinModule += ".addin";
+                    addinModule = Path.Combine(m_modulePath, addinModule);
+
+                    try
+                    {
+                        File.Delete(addinModule);
+                    }
+                    catch
+                    {
+                        TaskDialog.Show("Information", "Could not delete file: " + addinModule);
+                    }
+                }
+                TreeViewFromArcadisRibbon();
+            }
+
+            GetModules(m_modulePath, m_up);
         }
 
         private void LoadToolsButton_Click(object sender, EventArgs e)
         {
-            TaskDialog.Show("Feature", "Not implemented yet");
+            ListView.CheckedListViewItemCollection checkedItems = ToolsListView.CheckedItems;
+
+            foreach(ListViewItem item in checkedItems)
+            {
+                string moduleName = item.Text;
+                string module = Path.GetFileNameWithoutExtension(moduleName);
+
+                string moduleAddIn = module + ".addin";
+                string addinPath = Path.Combine(m_modulePath, moduleAddIn);
+
+                Utils.LoadAddin(addinPath);
+
+                TreePanelVisible(moduleName, true);
+            }
+            TreeViewFromArcadisRibbon();
+        }
+
+        private void UnloadToolsButton_Click(object sender, EventArgs e)
+        {
+            ListView.CheckedListViewItemCollection checkedItems = ToolsListView.CheckedItems;
+
+            foreach (ListViewItem item in checkedItems)
+            {
+                string moduleName = item.Text;
+                TreePanelVisible(moduleName, false);
+            }
+            TreeViewFromArcadisRibbon();
+        }
+
+        private void Ribbon_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainUserPreferences up = new MainUserPreferences();
+
+            up.ToolsPath = ToolsFolderTextBox.Text;
+            up.ToolModules = GetLoadedModules();
+
+            MainUserPreferences.SaveUserPreferences(up);
+        }
+
+        private IList<string> GetLoadedModules()
+        {
+            IList<string> loadedModules = new List<string>();
+
+            foreach (ToolbarTab tab in Utils.s_arcadisRibbon.Tabs)
+            {
+                if (tab.Panels.Count < 1) continue;
+
+                foreach (ToolbarPanel panel in tab.Panels)
+                {
+                    if (panel.Panel.Visible == false) continue;
+                    if (Utils.k_arcadisMain.Equals(panel.AssemblyName)) continue;
+
+                    loadedModules.Add( panel.AssemblyName);
+                }
+            }
+            return loadedModules;
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            ListView.CheckedListViewItemCollection checkedItems = ToolsListView.CheckedItems;
+            if (checkedItems.Count < 1) return;
+
+            string repoPath = Path.Combine(m_repoPath, Utils.k_revitVersion);
+
+            foreach (ListViewItem item in checkedItems)
+            {
+                string dllModule = item.Text;
+                string addinModule = Path.GetFileNameWithoutExtension(dllModule) + ".addin";
+
+                string dllSource = Path.Combine(repoPath, dllModule);
+                string addinSource = Path.Combine(repoPath, addinModule);
+
+                string dllDest = Path.Combine(m_modulePath, dllModule);
+                string addinDest = Path.Combine(m_modulePath, addinModule);
+
+                try
+                {
+                    File.Copy(dllSource, dllDest, true);
+                }
+                catch
+                {
+                    TaskDialog.Show("Exception", "Cannot copy module in use : " + item.Text);
+                    return;
+                }
+
+                try
+                {
+                    File.Copy(addinSource, addinDest, true);
+                }
+                catch
+                {
+                    TaskDialog.Show("Exception", "Error copying file: " + addinModule);
+                }
+            }
         }
     }
 }

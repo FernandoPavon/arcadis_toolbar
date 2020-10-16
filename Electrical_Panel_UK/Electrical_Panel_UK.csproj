@@ -115,12 +115,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArcadisMain\ArcadisMain.csproj">
-      <Project>{6dd11cdb-278c-4aab-bc2a-0dde85b3563d}</Project>
-      <Name>ArcadisMain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -131,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ElectricalFixture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArcadisMain\ArcadisMain.csproj">
+      <Project>{6dd11cdb-278c-4aab-bc2a-0dde85b3563d}</Project>
+      <Name>ArcadisMain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

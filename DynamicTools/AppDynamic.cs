@@ -16,7 +16,7 @@ namespace DynamicTools
         
         public Result OnStartup(UIControlledApplication application)
         {
-            if (Utils.b_dynamicTools) return Result.Succeeded;
+            //if (Utils.b_dynamicTools) return Result.Succeeded;
 
             try
             {

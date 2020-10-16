@@ -12,7 +12,7 @@ namespace Export_Panel
 
         public Result OnStartup(UIControlledApplication application)
         {
-            if (Utils.b_exportTools) return Result.Succeeded;
+            //if (Utils.b_exportTools) return Result.Succeeded;
 
             try
             {
@@ -39,7 +39,18 @@ namespace Export_Panel
 
                 //Export Panel
                 //-----------------------
-                RibbonPanel panel = application.CreateRibbonPanel(arcadisTab, Utils.k_exportPanel);
+                RibbonPanel panel;
+                try
+                {
+                    panel = application.CreateRibbonPanel(arcadisTab, Utils.k_exportPanel);
+                }
+                catch
+                {
+                    return Result.Cancelled;
+                }
+
+                if (null == panel) return Result.Failed;
+
                 ToolbarPanel toolPanel = new ToolbarPanel(panel.Name, panel, "Export_Panel.dll");
                 toolTab.Panels.Add(toolPanel);
 
